@@ -1,0 +1,43 @@
+@import "src/assets/styles/_breakpoints.scss";
+
+.header {
+    color: var(--character-light-title-85);
+
+    :global {
+        .ant-layout-header {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            gap: 8px;
+            padding: 16px 24px;
+            background: var(--primary-light-1);
+
+            @media (max-width: $breakpoint-xs) {
+                gap: 0;
+            }
+        }
+
+        h1.ant-typography {
+            margin-right: auto;
+            margin-bottom: 0 !important;
+            margin-top: 6px;
+            font-weight: 700;
+            font-size: 38px;
+            line-height: 130%;
+
+            @media (max-width: $breakpoint-lg) {
+                font-weight: 500;
+                font-size: 24px;
+            }
+
+            @media (max-width: $breakpoint-xs) {
+                font-size: 20px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    &_breadcrumb {
+        line-height: 130%;
+    }
+}

@@ -24,7 +24,10 @@ export const menuItems: MenuProps['items'] = [
     getItem(
         'Календарь',
         'sub1',
-        <CalendarTwoTone style={{ fontSize: 16 }} twoToneColor={'var(--primary-light-9)'} />,
+        <CalendarTwoTone
+            style={{ fontSize: 16 }}
+            twoToneColor={['var(--primary-light-9)', 'var(--primary-light-9)']}
+        />,
     ),
 
     getItem('Тренировки', 'sub2', <HeartFilled style={{ fontSize: 16 }} />),

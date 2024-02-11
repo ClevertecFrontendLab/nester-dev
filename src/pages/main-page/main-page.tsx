@@ -1,16 +1,20 @@
 import { Layout } from 'antd';
-import { Aside } from '@components/index.ts';
+import { Aside, Header } from '@components/index.ts';
+import { FC } from 'react';
+import styles from './MainPage.module.scss';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
-export const MainPage: React.FC = () => {
+export const MainPage: FC = () => {
     return (
-        <Layout>
-            <Aside />
+        <div className={styles.wrapper}>
             <Layout>
-                <Header>Header</Header>
-                <Content>Content</Content>
+                <Aside />
+                <Layout style={{ flexShrink: 0 }}>
+                    <Header />
+                    <Content>Content</Content>
+                </Layout>
             </Layout>
-        </Layout>
+        </div>
     );
 };
