@@ -1,0 +1,50 @@
+.aside {
+    position: relative;
+    padding-top: 30px;
+    height: 100vh;
+    background: var(--character-light-primary-inverse);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+
+    :global(.ant-layout-sider) {
+        height: 100%;
+        background: var(--character-light-primary-inverse);
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding-left: 29px;
+    flex-wrap: nowrap;
+
+    &_collapsed {
+        padding-left: 16px;
+    }
+
+
+    &_hide {
+        display: none;
+    }
+
+    &_full {
+        flex-shrink: 0;
+    }
+}
+
+.toggle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    left: 99%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 66px;
+    clip-path: polygon(0 0, 100% 13%, 100% 88%, 0% 100%);
+    border: none;
+    background: var(--character-light-primary-inverse);
+    z-index: 10;
+    cursor: pointer;
+}
