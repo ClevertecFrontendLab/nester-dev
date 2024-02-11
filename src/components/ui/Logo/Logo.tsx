@@ -11,8 +11,10 @@ const Logo: FC = () => {
 
     return (
         <div className={cn(styles.logo, isAsideCollapsed && styles.logo_collapsed)}>
-            <Clever className={cn(isAsideCollapsed && styles.logo_hide)} />
-            <Fit className={styles.logo_full} />
+            <span className={styles.logo_inner}>
+                <Clever className={cn(styles.logo_clever, isAsideCollapsed && styles.logo_hide)} />
+                <Fit className={styles.logo_full} />
+            </span>
         </div>
     );
 };
