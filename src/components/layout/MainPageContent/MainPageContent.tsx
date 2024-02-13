@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Card, Layout, Typography } from 'antd';
-import styles from './Content.module.scss';
 import ActionCards from '@components/layout/MainPageContent/ActionCards.tsx';
+import styles from './MainPageContent.module.scss';
 
 const MainPageContent: FC = () => {
     return (

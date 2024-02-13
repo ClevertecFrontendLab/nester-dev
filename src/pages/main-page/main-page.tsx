@@ -1,5 +1,5 @@
 import { Layout } from 'antd';
-import { Aside, Header, MainPageContent } from '@components/index.ts';
+import { Aside, Footer, Header, MainPageContent } from '@components/index.ts';
 import { FC } from 'react';
 import styles from './MainPage.module.scss';
 
@@ -11,6 +11,7 @@ export const MainPage: FC = () => {
                 <Layout>
                     <Header />
                     <MainPageContent />
+                    <Footer />
                 </Layout>
             </Layout>
         </div>

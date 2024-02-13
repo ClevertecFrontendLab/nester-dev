@@ -59,15 +59,19 @@
     @media (max-width: $breakpoint-sm) {
         flex-direction: column;
     }
+}
+
+.action_card {
+    max-width: 240px;
+    width: 100%;
+
+    @media (max-width: $breakpoint-sm) {
+        max-width: 100%;
+    }
 
     :global {
         .ant-card {
-            max-width: 240px;
             width: 100%;
-
-            @media (max-width: $breakpoint-sm) {
-                max-width: 100%;
-            }
         }
 
         .ant-card-head {
@@ -84,7 +88,11 @@
         }
 
         .ant-card-body {
-            padding: 19px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 0;
+            height: 56px;
             font-size: 14px;
             line-height: 130%;
             text-align: center;

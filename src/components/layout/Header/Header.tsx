@@ -21,7 +21,7 @@ const Header: FC = () => {
                     <Button
                         type={!isLessXs ? 'text' : 'default'}
                         icon={(isLargerMd || isLessXs) && <SettingOutlined />}
-                        shape={isLessXs && 'circle'}
+                        shape={isLessXs ? 'circle' : undefined}
                     >
                         {!isLessXs && 'Настройки'}
                     </Button>
