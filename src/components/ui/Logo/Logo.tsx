@@ -1,10 +1,11 @@
 import { FC } from 'react';
-import styles from '../../layout/Aside/Aside.module.scss';
 import cn from 'classnames';
 
 import { ReactComponent as Clever } from '@assets/icons/Clever.svg';
 import { ReactComponent as Fit } from '@assets/icons/fit.svg';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
+
+import styles from '../../layout/Aside/Aside.module.scss';
 
 const Logo: FC = () => {
     const { isAsideCollapsed } = useAppSelector((state) => state.mainState);

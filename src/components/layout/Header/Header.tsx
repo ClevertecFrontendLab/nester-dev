@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { Button, Layout, Row, Typography } from 'antd';
-import styles from './Header.module.scss';
 import { SettingOutlined } from '@ant-design/icons';
 import useMediaQuery from '@hooks/useMediaQuery.ts';
+
+import styles from './Header.module.scss';
 
 const Header: FC = () => {
     const isLargerMd = useMediaQuery('(min-width: 992px)');
