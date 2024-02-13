@@ -1,0 +1,102 @@
+@import "src/assets/styles/breakpoints";
+
+.wrapper {
+    padding: 24px 24px;
+    max-width: 800px;
+
+    p {
+        margin-bottom: 0;
+    }
+
+    @media (max-width: $breakpoint-md) {
+        padding: 24px 16px;
+    }
+}
+
+.description {
+    :global {
+        .ant-card {
+            font-size: 16px;
+            line-height: 130%;
+            color: var(--primary-light-9);
+        }
+
+        .ant-card-body {
+            @media (max-width: $breakpoint-md) {
+                padding: 16px 31px 16px 16px;
+            }
+        }
+    }
+}
+
+.heading {
+    margin-top: 24px;
+
+    :global {
+        .ant-typography {
+            margin-bottom: 0;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 130%;
+            color: var(--character-light-title-85);
+        }
+
+        .ant-card-body {
+            @media (max-width: $breakpoint-md) {
+                padding: 16px 31px 16px 16px;
+            }
+        }
+    }
+}
+
+.cards {
+    display: flex;
+    column-gap: 16px;
+    row-gap: 8px;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    @media (max-width: $breakpoint-sm) {
+        flex-direction: column;
+    }
+}
+
+.action_card {
+    max-width: 240px;
+    width: 100%;
+
+    @media (max-width: $breakpoint-sm) {
+        max-width: 100%;
+    }
+
+    :global {
+        .ant-card {
+            width: 100%;
+        }
+
+        .ant-card-head {
+            display: flex;
+            justify-content: center;
+        }
+
+        .ant-card-head-title {
+            padding: 11px 0;
+            font-size: 16px;
+            line-height: 130%;
+            white-space: pre-wrap;
+            color: var(--character-light-title-85);
+        }
+
+        .ant-card-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 0;
+            height: 56px;
+            font-size: 14px;
+            line-height: 130%;
+            text-align: center;
+            color: var(--primary-light-6);
+        }
+    }
+}

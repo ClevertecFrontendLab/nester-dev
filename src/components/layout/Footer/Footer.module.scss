@@ -1,0 +1,55 @@
+@import "src/assets/styles/breakpoints";
+
+.footer {
+    padding-bottom: 42px;
+
+    :global {
+        .ant-layout-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            width: 100%;
+            padding: 0 24px;
+            background: transparent;
+
+            @media (max-width: $breakpoint-sm) {
+                flex-direction: column-reverse;
+                align-items: center;
+                row-gap: 24px;
+                padding: 0 16px;
+            }
+        }
+    }
+
+    .reviews {
+        font-weight: 400;
+        font-size: 16px !important;
+        line-height: 130%;
+        text-align: center;
+        color: var(--primary-light-6);
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+    color: var(--primary-light-6);
+}
+
+.subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 130%;
+    color: var(--character-light-secondary-45);
+}

@@ -1,0 +1,100 @@
+@import "src/assets/styles/_breakpoints.scss";
+
+.aside {
+    position: relative;
+    padding-top: 30px;
+    height: 100vh;
+    background: var(--character-light-primary-inverse);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    z-index: 15;
+
+    :global(.ant-layout-sider) {
+        height: 100%;
+        background: var(--character-light-primary-inverse);
+    }
+
+    @media (max-width: $breakpoint-md) {
+        position: absolute;
+        padding-top: 0;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding-left: 29px;
+    flex-wrap: nowrap;
+
+    &_inner {
+        display: flex;
+        align-items: end;
+        width: 133px;
+        height: 33px;
+    }
+
+    &_collapsed {
+        padding-left: 16px;
+    }
+
+    &_clever {
+        width: 97px;
+        height: 23px;
+    }
+
+    &_hide {
+        display: none;
+    }
+
+    &_full {
+        flex-shrink: 0;
+    }
+
+    @media (max-width: $breakpoint-md) {
+        padding-left: 17px;
+        height: 50px;
+
+        &_inner {
+            width: 72px;
+            height: 18px;
+        }
+
+        &_clever {
+            width: 52px;
+            height: 13px;
+        }
+
+        &_hide {
+            display: block;
+        }
+
+        &_full {
+            width: 19px;
+            height: 17px;
+        }
+    }
+}
+
+.toggle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    left: 99%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 66px;
+    clip-path: polygon(0 0, 100% 13%, 100% 88%, 0% 100%);
+    border: none;
+    background: var(--character-light-primary-inverse);
+    z-index: 10;
+    cursor: pointer;
+
+    @media (max-width: $breakpoint-md) {
+        top: 24px;
+        width: 32px;
+        height: 48px;
+        transform: translateY(0);
+    }
+}
