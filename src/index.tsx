@@ -1,10 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { HashRouter, Route, Routes } from 'react-router-dom';
-
-import { store } from '@redux/configure-store';
-import { MainPage } from './pages';
+import { HistoryRouter } from 'redux-first-history/rr6';
+import { history, store } from '@redux/configure-store';
+import { routes } from './routes';
 
 import 'normalize.css';
 import 'antd/dist/antd.css';
@@ -16,11 +15,7 @@ const root = createRoot(domNode);
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <HashRouter>
-                <Routes>
-                    <Route path='/' element={<MainPage />} />
-                </Routes>
-            </HashRouter>
+            <HistoryRouter history={history}>{routes}</HistoryRouter>
         </Provider>
     </React.StrictMode>,
 );

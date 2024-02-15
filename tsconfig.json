@@ -48,6 +48,12 @@
             ],
             "@assets/*": [
                 "./src/assets/*"
+            ],
+            "@shared/*": [
+                "./src/shared/*"
+            ],
+            "@providers/*": [
+                "./src/providers/*"
             ]
         },
         "plugins": [
