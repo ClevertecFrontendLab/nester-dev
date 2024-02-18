@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { Button, Grid } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
-import styles from './LoginForm.module.scss';
+import styles from './AuthForm.module.scss';
 
 const { useBreakpoint } = Grid;
 
-const LoginButtons: FC = () => {
+const AuthButtons: FC = () => {
     const { sm } = useBreakpoint();
 
     return (
@@ -16,4 +16,4 @@ const LoginButtons: FC = () => {
     );
 };
 
-export default LoginButtons;
+export default AuthButtons;

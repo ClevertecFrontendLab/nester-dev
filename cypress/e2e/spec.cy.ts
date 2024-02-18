@@ -4,23 +4,23 @@ describe('sprint 2', () => {
         cy.visit('/');
     });
 
-    it('login-success', () => {
-        cy.intercept('POST', 'auth/login', { accessToken: 'SUPERUSER' }).as('login');
+    it('auth-success', () => {
+        cy.intercept('POST', 'auth/auth', { accessToken: 'SUPERUSER' }).as('auth');
         cy.viewport(1440, 900);
         cy.wait(1000);
-        cy.screenshot('login-success-1');
+        cy.screenshot('auth-success-1');
         cy.url().should('include', '/auth');
-        cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-password]').type('123');
-        cy.get('[data-test-id=login-submit-button]').click();
-        cy.get('[data-test-id=login-password]').clear().type('123qq');
-        cy.get('[data-test-id=login-submit-button]').click();
-        cy.get('[data-test-id=login-password]').clear().type('123qqQQ');
-        cy.get('[data-test-id=login-submit-button]').click();
-        cy.get('[data-test-id=login-password]').clear().type('1234qqQQ');
-        cy.get('[data-test-id=login-submit-button]').click();
+        cy.get('[data-test-id=auth-email]').type('valadzkoaliaksei@tut.by');
+        cy.get('[data-test-id=auth-password]').type('123');
+        cy.get('[data-test-id=auth-submit-button]').click();
+        cy.get('[data-test-id=auth-password]').clear().type('123qq');
+        cy.get('[data-test-id=auth-submit-button]').click();
+        cy.get('[data-test-id=auth-password]').clear().type('123qqQQ');
+        cy.get('[data-test-id=auth-submit-button]').click();
+        cy.get('[data-test-id=auth-password]').clear().type('1234qqQQ');
+        cy.get('[data-test-id=auth-submit-button]').click();
         cy.get('[data-test-id=loader]').should('be.exist');
-        cy.wait('@login').should(({ request }) => {
+        cy.wait('@auth').should(({ request }) => {
             assert.deepEqual(request.body, {
                 email: 'valadzkoaliaksei@tut.by',
                 password: '1234qqQQ',
@@ -29,37 +29,37 @@ describe('sprint 2', () => {
         cy.url().should('include', '/main');
     });
 
-    it('login-error', () => {
-        cy.intercept('POST', 'auth/login', {
+    it('auth-error', () => {
+        cy.intercept('POST', 'auth/auth', {
             statusCode: 404,
-        }).as('login');
+        }).as('auth');
         cy.viewport(834, 900);
-        cy.screenshot('login-error-1');
-        cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-password]').type('1234qqQQ');
-        cy.get('[data-test-id=login-submit-button]').click();
-        cy.wait('@login');
-        cy.url().should('include', '/result/error-login');
-        cy.screenshot('login-error-2');
-        cy.get('[data-test-id=login-retry-button]').click();
+        cy.screenshot('auth-error-1');
+        cy.get('[data-test-id=auth-email]').type('valadzkoaliaksei@tut.by');
+        cy.get('[data-test-id=auth-password]').type('1234qqQQ');
+        cy.get('[data-test-id=auth-submit-button]').click();
+        cy.wait('@auth');
+        cy.url().should('include', '/result/error-auth');
+        cy.screenshot('auth-error-2');
+        cy.get('[data-test-id=auth-retry-button]').click();
         cy.url().should('include', '/auth');
-        cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-password]').type('1234qqQQ');
-        cy.intercept('POST', 'auth/login', { accessToken: 'SUPERUSER' }).as('login');
-        cy.get('[data-test-id=login-submit-button]').click();
-        cy.wait('@login');
+        cy.get('[data-test-id=auth-email]').type('valadzkoaliaksei@tut.by');
+        cy.get('[data-test-id=auth-password]').type('1234qqQQ');
+        cy.intercept('POST', 'auth/auth', { accessToken: 'SUPERUSER' }).as('auth');
+        cy.get('[data-test-id=auth-submit-button]').click();
+        cy.wait('@auth');
         cy.url().should('include', '/main');
     });
 
-    it('login-remember', () => {
-        cy.intercept('POST', 'auth/login', { accessToken: 'SUPERUSER' }).as('login');
+    it('auth-remember', () => {
+        cy.intercept('POST', 'auth/auth', { accessToken: 'SUPERUSER' }).as('auth');
         cy.viewport(360, 900);
-        cy.screenshot('login-remember-1');
-        cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-password]').type('1234qqQQ');
-        cy.get('[data-test-id=login-remember]').check();
-        cy.get('[data-test-id=login-submit-button]').click();
-        cy.wait('@login');
+        cy.screenshot('auth-remember-1');
+        cy.get('[data-test-id=auth-email]').type('valadzkoaliaksei@tut.by');
+        cy.get('[data-test-id=auth-password]').type('1234qqQQ');
+        cy.get('[data-test-id=auth-remember]').check();
+        cy.get('[data-test-id=auth-submit-button]').click();
+        cy.wait('@auth');
         cy.url().should('include', '/main');
         cy.visit('/');
         cy.url().should('include', '/main');
@@ -67,7 +67,7 @@ describe('sprint 2', () => {
 
     it('reg-success', () => {
         cy.intercept('POST', '/auth/registration', { statusCode: 201 }).as('registration');
-        cy.intercept('POST', 'auth/login', { accessToken: 'SUPERUSER' }).as('login');
+        cy.intercept('POST', 'auth/auth', { accessToken: 'SUPERUSER' }).as('auth');
         cy.viewport(1440, 900);
         cy.contains('Регистрация').click();
         cy.screenshot('reg-success-1');
@@ -81,10 +81,10 @@ describe('sprint 2', () => {
         cy.screenshot('reg-success-2');
         cy.get('[data-test-id=registration-enter-button]').click();
         cy.url().should('include', '/auth');
-        cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-password]').type('1234qqQQ');
-        cy.get('[data-test-id=login-submit-button]').click();
-        cy.wait('@login');
+        cy.get('[data-test-id=auth-email]').type('valadzkoaliaksei@tut.by');
+        cy.get('[data-test-id=auth-password]').type('1234qqQQ');
+        cy.get('[data-test-id=auth-submit-button]').click();
+        cy.wait('@auth');
         cy.url().should('include', '/main');
     });
 
@@ -124,11 +124,11 @@ describe('sprint 2', () => {
         }).as('checkEmail');
         cy.intercept('POST', '/auth/confirm-email', { statusCode: 201 }).as('confirmEmail');
         cy.intercept('POST', '/auth/change-password', { statusCode: 201 }).as('changePass');
-        cy.intercept('POST', 'auth/login', { accessToken: 'SUPERUSER' }).as('login');
+        cy.intercept('POST', 'auth/auth', { accessToken: 'SUPERUSER' }).as('auth');
         cy.viewport(1440, 900);
-        cy.get('[data-test-id=login-forgot-button]').click();
-        cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-forgot-button]').click();
+        cy.get('[data-test-id=auth-forgot-button]').click();
+        cy.get('[data-test-id=auth-email]').type('valadzkoaliaksei@tut.by');
+        cy.get('[data-test-id=auth-forgot-button]').click();
         cy.wait('@checkEmail');
         cy.url().should('include', '/auth/confirm-email');
         cy.screenshot('change-pass-success-1');
@@ -144,10 +144,10 @@ describe('sprint 2', () => {
         cy.screenshot('change-pass-success-3');
         cy.get('[data-test-id=change-entry-button]').click();
         cy.url().should('include', '/auth');
-        cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-password]').type('1234qqQQ');
-        cy.get('[data-test-id=login-submit-button]').click();
-        cy.wait('@login');
+        cy.get('[data-test-id=auth-email]').type('valadzkoaliaksei@tut.by');
+        cy.get('[data-test-id=auth-password]').type('1234qqQQ');
+        cy.get('[data-test-id=auth-submit-button]').click();
+        cy.wait('@auth');
         cy.url().should('include', '/main');
     });
 
@@ -157,8 +157,8 @@ describe('sprint 2', () => {
             statusCode: 404,
             body: { message: 'Email не найден' },
         }).as('checkEmail');
-        cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-forgot-button]').click();
+        cy.get('[data-test-id=auth-email]').type('valadzkoaliaksei@tut.by');
+        cy.get('[data-test-id=auth-forgot-button]').click();
         cy.wait('@checkEmail');
         cy.url().should('include', '/result/error-check-email-no-exist');
         cy.screenshot('change-pass-error-1');
@@ -167,8 +167,8 @@ describe('sprint 2', () => {
         cy.intercept('POST', '/auth/check-email', {
             statusCode: 409,
         }).as('checkEmail');
-        cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-forgot-button]').click();
+        cy.get('[data-test-id=auth-email]').type('valadzkoaliaksei@tut.by');
+        cy.get('[data-test-id=auth-forgot-button]').click();
         cy.wait('@checkEmail');
         cy.url().should('include', '/result/error-check-email');
         cy.screenshot('change-pass-error-2');
@@ -198,13 +198,13 @@ describe('sprint 2', () => {
         cy.wait('@changePass');
         cy.url().should('include', '/result/success-change-password');
         cy.get('[data-test-id=change-entry-button]').click();
-        cy.intercept('POST', 'auth/login', { accessToken: 'SUPERUSER' }).as('login');
+        cy.intercept('POST', 'auth/auth', { accessToken: 'SUPERUSER' }).as('auth');
         cy.url().should('include', '/auth');
-        cy.get('[data-test-id=login-email]').type('valadzkoaliaksei@tut.by');
-        cy.get('[data-test-id=login-password]').type('1234qqQQ');
-        cy.get('[data-test-id=login-submit-button]').click();
+        cy.get('[data-test-id=auth-email]').type('valadzkoaliaksei@tut.by');
+        cy.get('[data-test-id=auth-password]').type('1234qqQQ');
+        cy.get('[data-test-id=auth-submit-button]').click();
         cy.get('[data-test-id=loader]').should('be.exist');
-        cy.wait('@login');
+        cy.wait('@auth');
         cy.url().should('include', '/main');
     });
 });

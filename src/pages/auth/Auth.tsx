@@ -1,18 +1,18 @@
 import { FC } from 'react';
 import { Layout } from 'antd';
+import { AuthForm } from '@components/index.ts';
 
-import styles from './Login.module.scss';
-import LoginForm from '@components/ui/form/LoginForm/LoginForm.tsx';
+import styles from './Auth.module.scss';
 
-const Login: FC = () => {
+const Auth: FC = () => {
     return (
         <div className={styles.wrapper}>
             <Layout>
                 <div className={styles.blur} />
-                <LoginForm />
+                <AuthForm />
             </Layout>
         </div>
     );
 };
 
-export default Login;
+export default Auth;
