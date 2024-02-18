@@ -1,4 +1,4 @@
-@import "src/assets/styles/_breakpoints.scss";
+@import "src/assets/styles/mixins";
 
 .header {
     color: var(--character-light-title-85);
@@ -12,7 +12,7 @@
             padding: 16px 24px;
             background: var(--primary-light-1);
 
-            @media (max-width: $breakpoint-xs) {
+            @include xs {
                 gap: 0;
             }
         }
@@ -25,12 +25,12 @@
             font-size: 38px;
             line-height: 130%;
 
-            @media (max-width: $breakpoint-lg) {
+            @include lg {
                 font-weight: 500;
                 font-size: 24px;
             }
 
-            @media (max-width: $breakpoint-xs) {
+            @include xs {
                 font-size: 20px;
                 font-weight: 500;
             }

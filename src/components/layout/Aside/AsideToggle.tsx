@@ -1,13 +1,15 @@
 import { FC } from 'react';
+import { Grid } from 'antd';
 import { MenuFoldOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { toggleAside } from '@redux/mainStore.ts';
-import useMediaQuery from '@hooks/useMediaQuery.ts';
 
 import styles from './Aside.module.scss';
 
+const { useBreakpoint } = Grid;
+
 const AsideToggle: FC = () => {
-    const isMobile = useMediaQuery('(max-width: 480px)');
+    const { xs } = useBreakpoint();
     const { isAsideCollapsed } = useAppSelector((state) => state.mainState);
     const dispatch = useAppDispatch();
 
@@ -20,7 +22,7 @@ const AsideToggle: FC = () => {
             type='button'
             onClick={handleClick}
             className={styles.toggle}
-            data-test-id={isMobile ? 'sider-switch-mobile' : 'sider-switch'}
+            data-test-id={xs ? 'sider-switch-mobile' : 'sider-switch'}
         >
             <MenuFoldOutlined />
         </button>

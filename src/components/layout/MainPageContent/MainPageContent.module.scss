@@ -1,4 +1,4 @@
-@import "src/assets/styles/breakpoints";
+@import "src/assets/styles/_mixins.scss";
 
 .wrapper {
     padding: 24px 24px;
@@ -8,7 +8,7 @@
         margin-bottom: 0;
     }
 
-    @media (max-width: $breakpoint-md) {
+    @include md {
         padding: 24px 16px;
     }
 }
@@ -22,7 +22,7 @@
         }
 
         .ant-card-body {
-            @media (max-width: $breakpoint-md) {
+            @include md {
                 padding: 16px 31px 16px 16px;
             }
         }
@@ -42,7 +42,7 @@
         }
 
         .ant-card-body {
-            @media (max-width: $breakpoint-md) {
+            @include md {
                 padding: 16px 31px 16px 16px;
             }
         }
@@ -56,7 +56,7 @@
     justify-content: space-between;
     margin-top: 16px;
 
-    @media (max-width: $breakpoint-sm) {
+    @include sm {
         flex-direction: column;
     }
 }
@@ -65,7 +65,7 @@
     max-width: 240px;
     width: 100%;
 
-    @media (max-width: $breakpoint-sm) {
+    @include sm {
         max-width: 100%;
     }
 

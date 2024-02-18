@@ -16,3 +16,5 @@ export const MainPage: FC = () => (
         </Layout>
     </div>
 );
+
+export default MainPage;

@@ -1,4 +1,4 @@
-@import "src/assets/styles/_breakpoints.scss";
+@import "src/assets/styles/mixins";
 
 .aside {
     position: relative;
@@ -13,7 +13,7 @@
         background: var(--character-light-primary-inverse);
     }
 
-    @media (max-width: $breakpoint-md) {
+    @include md {
         position: absolute;
         padding-top: 0;
     }
@@ -50,7 +50,7 @@
         flex-shrink: 0;
     }
 
-    @media (max-width: $breakpoint-md) {
+    @include md {
         padding-left: 17px;
         height: 50px;
 
@@ -91,7 +91,7 @@
     z-index: 10;
     cursor: pointer;
 
-    @media (max-width: $breakpoint-md) {
+    @include md {
         top: 24px;
         width: 32px;
         height: 48px;
