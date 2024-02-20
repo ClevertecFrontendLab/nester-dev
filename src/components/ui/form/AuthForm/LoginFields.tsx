@@ -3,14 +3,23 @@ import { Checkbox, Form, Input, Row } from 'antd';
 import { Link } from 'react-router-dom';
 
 import styles from './AuthForm.module.scss';
+import InputEmailPrefix from '@components/ui/form/AuthForm/InputEmailPrefix.tsx';
 
 const LoginFields: FC = () => {
     return (
         <>
-            <Form.Item label='e-mail' labelCol={{ span: 5 }} colon>
-                <Input />
+            <Form.Item name='login-email' rules={[{ required: true, message: '', type: 'email' }]}>
+                <Input addonBefore={<InputEmailPrefix />} />
             </Form.Item>
-            <Form.Item>
+            <Form.Item
+                name='login-password'
+                rules={[
+                    {
+                        required: true,
+                        message: '',
+                    },
+                ]}
+            >
                 <Input.Password placeholder='Пароль' />
             </Form.Item>
 

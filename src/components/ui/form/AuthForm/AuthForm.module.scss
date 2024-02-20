@@ -61,10 +61,6 @@
             }
         }
 
-        .remove-margin {
-            margin-bottom: 16px;
-        }
-
         .ant-form-item-label {
             display: flex;
             flex: 1 0 auto !important;
@@ -99,11 +95,46 @@
             background: var(--primary-light-6);
         }
 
-        .ant-form-item-extra {
+        .ant-form-item-explain {
             margin-top: 2px;
             font-weight: 400;
             font-size: 12px;
             line-height: 130%;
+            color: var(--character-light-secondary-45);
+        }
+
+        .ant-input-group-addon {
+            width: 71px;
+        }
+
+        .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input {
+            border-left-color: #d9d9d9;
+        }
+
+        .ant-input-group-wrapper-status-error .ant-input-group-addon {
+            color: rgba(0, 0, 0, 0.85);
+            border-right-color: #d9d9d9 !important;
+        }
+
+        .ant-form-item-explain-error {
+            display: block;
+        }
+
+        .ant-input-affix-wrapper:focus, .ant-input-affix-wrapper-focused {
+            border: 1px solid var(--primary-light-5);
+            box-shadow: 0 0 0 2px rgba(47, 84, 235, 0.2);
+        }
+
+        .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+            border: 1px solid var(--primary-light-5);
+        }
+
+
+        .ant-input-password-icon.anticon {
+            color: var(--primary-light-6);
+        }
+
+        .ant-input-password-icon.anticon-eye-invisible {
             color: var(--character-light-secondary-45);
         }
 
