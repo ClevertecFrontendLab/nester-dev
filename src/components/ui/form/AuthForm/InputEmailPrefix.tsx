@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-const InputEmailPrefix: FC = () => {
-    return <div>email:</div>;
-};
+const InputEmailPrefix: FC = () => <div>email:</div>;
 
 export default InputEmailPrefix;

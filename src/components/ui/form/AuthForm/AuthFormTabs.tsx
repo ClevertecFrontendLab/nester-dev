@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Tabs } from 'antd';
-import { useLocation, useNavigate } from 'react-router-dom';
 import LoginFields from '@components/ui/form/AuthForm/LoginFields.tsx';
 import RegisterFields from '@components/ui/form/AuthForm/RegisterFields.tsx';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Paths } from '@shared/constants.ts';
 
 const AuthFormTabs: FC = () => {

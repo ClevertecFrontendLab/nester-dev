@@ -1,18 +1,6 @@
 @import "colors";
 @import "fonts";
 
-:root {
-    --font-family: "Inter", sans-serif;
-    --second-family: "Roboto", sans-serif;
-    --breakpoint-xs: 480px;
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    --breakpoint-2xl: 1600px;
-
-}
-
 body {
     font-family: var(--font-family);
 }

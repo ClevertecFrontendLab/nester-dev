@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Checkbox, Form, Input, Row } from 'antd';
 import { Link } from 'react-router-dom';
+import InputEmailPrefix from '@components/ui/form/AuthForm/InputEmailPrefix.tsx';
 
 import styles from './AuthForm.module.scss';
-import InputEmailPrefix from '@components/ui/form/AuthForm/InputEmailPrefix.tsx';
 
 const LoginFields: FC = () => {
     return (
