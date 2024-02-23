@@ -1,5 +1,6 @@
-import { AuthStatuses } from '@components/ui/AuthStatusCard/types.ts';
 import { CheckCircleFilled, CloseCircleFilled, WarningFilled } from '@ant-design/icons';
+import { AuthStatuses } from '@shared/types.ts';
+import { Paths } from '@shared/constants.ts';
 
 export const getCardDataViaStatus = (status: AuthStatuses) => {
     switch (status) {
@@ -8,14 +9,18 @@ export const getCardDataViaStatus = (status: AuthStatuses) => {
                 icon: <WarningFilled style={{ color: 'var(--character-light-warning)' }} />,
                 title: 'Вход не выполнен',
                 description: 'Что-то пошло не так. Попробуйте еще раз',
+                buttonText: 'Повторить',
+                button_navigate: Paths.LOGIN,
             };
 
-        case AuthStatuses.EMAIL_EXISTS:
+        case AuthStatuses.USER_EXISTS:
             return {
                 icon: <CloseCircleFilled style={{ color: 'var(--character-light-error)' }} />,
                 title: 'Данные не сохранились',
                 description:
                     'Такой e-mail уже записан в системе. Попробуйте зарегистрироваться по другому e-mail.',
+                buttonText: 'Назад к регистрации',
+                button_navigate: Paths.REGISTRATION,
             };
 
         case AuthStatuses.REGISTER_SUCCESS:
@@ -24,6 +29,8 @@ export const getCardDataViaStatus = (status: AuthStatuses) => {
                 title: 'Регистрация успешна',
                 description:
                     'Регистрация прошла успешно. Зайдите в приложение, используя свои e-mail и пароль.',
+                buttonText: 'Войти',
+                button_navigate: Paths.LOGIN,
             };
 
         case AuthStatuses.REGISTER_ERROR:
@@ -32,6 +39,8 @@ export const getCardDataViaStatus = (status: AuthStatuses) => {
                 title: 'Данные не сохранились',
                 description:
                     'Что-то пошло не так и ваша регистрация не завершилась. Попробуйте ещё раз.',
+                buttonText: 'Повторить',
+                button_navigate: Paths.REGISTRATION,
             };
 
         case AuthStatuses.PASSWORD_CHANGE_SUCCESS:
@@ -39,6 +48,8 @@ export const getCardDataViaStatus = (status: AuthStatuses) => {
                 icon: <CheckCircleFilled style={{ color: 'var(--character-light-success)' }} />,
                 title: 'Пароль успешно изменен',
                 description: 'Теперь можно войти в аккаунт, используя свой логин и новый пароль',
+                buttonText: 'Вход',
+                button_navigate: Paths.LOGIN,
             };
 
         case AuthStatuses.PASSWORD_CHANGE_ERROR:
@@ -46,6 +57,8 @@ export const getCardDataViaStatus = (status: AuthStatuses) => {
                 icon: <WarningFilled style={{ color: 'var(--character-light-warning)' }} />,
                 title: 'Данные не сохранились',
                 description: 'Что-то пошло не так. Попробуйте ещё раз',
+                buttonText: 'Повторить',
+                button_navigate: '',
             };
     }
 };

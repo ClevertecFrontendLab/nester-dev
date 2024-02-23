@@ -173,20 +173,35 @@
     }
 }
 
-.forgot {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 130%;
-    color: var(--primary-light-6);
-
-    @include md {
-        font-size: 14px;
-    }
-}
-
 .check {
     line-height: 18px;
     padding-top: 22px;
+
+    .ant-form-large .ant-form-item-control-input {
+        min-height: unset !important;
+    }
+
+    :global {
+        .ant-form-item {
+            margin-bottom: 0;
+            height: 24px;
+        }
+
+        .ant-form-item-control-input {
+            min-height: unset !important;
+        }
+
+        .ant-btn-text {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 130%;
+            color: var(--primary-light-6);
+
+            @include md {
+                font-size: 14px;
+            }
+        }
+    }
 }
 
 .buttons {

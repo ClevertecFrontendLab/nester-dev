@@ -1,15 +1,24 @@
-import { FC, PropsWithChildren } from 'react';
-import { AuthStatuses } from '@components/ui/AuthStatusCard/types.ts';
+import { FC } from 'react';
 import { getCardDataViaStatus } from '@components/ui/AuthStatusCard/helper.tsx';
+import { AuthStatuses } from '@shared/types.ts';
 
 import styles from './AuthStatusCard.module.scss';
+import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
-interface Props extends PropsWithChildren {
+interface Props {
     status: AuthStatuses;
 }
 
-const AuthStatusCard: FC<Props> = ({ status, children }) => {
-    const { icon, title, description } = getCardDataViaStatus(status);
+const AuthStatusCard: FC<Props> = ({ status }) => {
+    const { icon, title, description, button_navigate, buttonText } = getCardDataViaStatus(status);
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        if (button_navigate) {
+            navigate(button_navigate, { replace: true });
+        }
+    };
 
     return (
         <div className={styles.wrapper}>
@@ -18,7 +27,10 @@ const AuthStatusCard: FC<Props> = ({ status, children }) => {
                 <h3 className={styles.title}>{title}</h3>
                 <p className={styles.description}>{description}</p>
             </div>
-            {children}
+
+            <Button type='primary' size='large' block onClick={handleNavigate}>
+                {buttonText}
+            </Button>
         </div>
     );
 };

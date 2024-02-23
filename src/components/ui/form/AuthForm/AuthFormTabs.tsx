@@ -10,7 +10,6 @@ const AuthFormTabs: FC = () => {
     const navigate = useNavigate();
 
     const onChange = (activeKey: string) => {
-        console.log(activeKey);
         if (activeKey === Paths.LOGIN) {
             navigate(Paths.LOGIN);
         } else if (activeKey === Paths.REGISTRATION) {
