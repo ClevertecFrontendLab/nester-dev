@@ -7,7 +7,7 @@ import styles from './Loader.module.scss';
 const Loader: FC = () => {
     return (
         <div className={styles.wrapper}>
-            <Lottie animationData={loader} className={styles.loader} />
+            <Lottie animationData={loader} className={styles.loader} data-test-id='loader' />
         </div>
     );
 };

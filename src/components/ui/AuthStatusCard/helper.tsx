@@ -17,6 +17,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                 description: 'Что-то пошло не так. Попробуйте еще раз',
                 buttonText: 'Повторить',
                 button_navigate: Paths.LOGIN,
+                data_test_id: 'login-retry-button',
             };
 
         case AuthStatuses.USER_EXISTS:
@@ -27,6 +28,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                     'Такой e-mail уже записан в системе. Попробуйте зарегистрироваться по другому e-mail.',
                 buttonText: 'Назад к регистрации',
                 button_navigate: Paths.REGISTRATION,
+                data_test_id: 'registration-back-button',
             };
 
         case AuthStatuses.REGISTER_SUCCESS:
@@ -37,6 +39,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                     'Регистрация прошла успешно. Зайдите в приложение, используя свои e-mail и пароль.',
                 buttonText: 'Войти',
                 button_navigate: Paths.LOGIN,
+                data_test_id: 'registration-enter-button',
             };
 
         case AuthStatuses.REGISTER_ERROR:
@@ -47,6 +50,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                     'Что-то пошло не так и ваша регистрация не завершилась. Попробуйте ещё раз.',
                 buttonText: 'Повторить',
                 button_navigate: Paths.REGISTRATION,
+                data_test_id: 'registration-retry-button',
             };
 
         case AuthStatuses.PASSWORD_CHANGE_SUCCESS:
@@ -56,6 +60,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                 description: 'Теперь можно войти в аккаунт, используя свой логин и новый пароль',
                 buttonText: 'Вход',
                 button_navigate: Paths.LOGIN,
+                data_test_id: 'change-entry-button',
             };
 
         case AuthStatuses.ERROR_CHECK_EMAIL_NO_EXIST:
@@ -65,6 +70,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                 description: 'Мы не нашли в базе вашего e-mail. Попробуйте войти с другим e-mail.',
                 buttonText: 'Попробовать снова',
                 button_navigate: Paths.LOGIN,
+                data_test_id: 'check-retry-button',
             };
 
         case AuthStatuses.EMAIL_CHANGE_ERROR:
@@ -74,6 +80,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                 description: 'Произошла ошибка, попробуйте отправить форму ещё раз.',
                 buttonText: 'Назад',
                 button_navigate: Paths.LOGIN,
+                data_test_id: 'check-retry-button',
             };
 
         case AuthStatuses.CONFIRM_EMAIL:
@@ -83,6 +90,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                 description: `Мы отправили вам на e-mail ${verificationEmail} шестизначный код. Введите его в поле ниже.`,
                 buttonText: '',
                 button_navigate: '',
+                data_test_id: '',
             };
 
         case AuthStatuses.PASSWORD_CHANGE:
@@ -92,6 +100,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                 description: '',
                 buttonText: 'Сохранить',
                 button_navigate: '',
+                data_test_id: '',
             };
 
         case AuthStatuses.PASSWORD_CHANGE_ERROR:
@@ -101,6 +110,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                 description: 'Что-то пошло не так. Попробуйте ещё раз',
                 buttonText: 'Повторить',
                 button_navigate: Paths.CHANGE_PASSWORD,
+                data_test_id: 'change-retry-button',
             };
     }
 };

@@ -17,10 +17,12 @@ const AuthButtons: FC<Props> = ({ hasErrors }) => {
     const { pathname } = useLocation();
 
     const buttonText = pathname === Paths.LOGIN ? 'Войти' : 'Регистрация';
+    const dataTestId =
+        pathname === Paths.LOGIN ? 'login-submit-button' : 'registration-submit-button';
 
     return (
         <div className={styles.buttons}>
-            <Button type='primary' htmlType='submit' disabled={hasErrors}>
+            <Button type='primary' htmlType='submit' disabled={hasErrors} data-test-id={dataTestId}>
                 Войти
             </Button>
             <Button icon={sm && <GooglePlusOutlined />}>{buttonText} через Google</Button>

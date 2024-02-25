@@ -5,7 +5,11 @@ import SetPasswordInputs from '@components/ui/form/AuthForm/SetPasswordInputs.ts
 
 const RegisterFields: FC = () => (
     <>
-        <Form.Item name='register_email' rules={[{ required: true, message: '', type: 'email' }]}>
+        <Form.Item
+            name='register_email'
+            rules={[{ required: true, message: '', type: 'email' }]}
+            data-test-id='registration-email'
+        >
             <Input addonBefore={<InputEmailPrefix />} />
         </Form.Item>
 

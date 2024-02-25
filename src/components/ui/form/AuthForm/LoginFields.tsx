@@ -20,7 +20,12 @@ const LoginFields: FC = () => {
     return (
         <>
             <Form.Item name='login_email' rules={[{ required: true, message: '', type: 'email' }]}>
-                <Input autoComplete='off' placeholder='E-mail' addonBefore={<InputEmailPrefix />} />
+                <Input
+                    autoComplete='off'
+                    placeholder='E-mail'
+                    addonBefore={<InputEmailPrefix />}
+                    data-test-id='login-email'
+                />
             </Form.Item>
             <Form.Item
                 name='login_password'
@@ -31,12 +36,12 @@ const LoginFields: FC = () => {
                     },
                 ]}
             >
-                <Input.Password placeholder='Пароль' />
+                <Input.Password placeholder='Пароль' data-test-id='login-password' />
             </Form.Item>
 
             <Row justify='space-between' align='middle' className={styles.check}>
                 <Form.Item name='remember_me' valuePropName='checked'>
-                    <Checkbox>Запомнить меня</Checkbox>
+                    <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
                 </Form.Item>
 
                 <Button
@@ -44,6 +49,7 @@ const LoginFields: FC = () => {
                     size='small'
                     disabled={isForgotPasswordDisabled}
                     onClick={handleClick}
+                    data-test-id='login-forgot-button'
                 >
                     Забыли пароль?
                 </Button>

@@ -38,6 +38,7 @@ const VerificationBlock: FC<Props> = ({ email }) => {
                 placeholder=''
                 autoFocus
                 onComplete={handleComplete}
+                data-test-id='verification-input'
                 value={code}
                 onChange={(code) => setCode(code)}
                 classNames={{

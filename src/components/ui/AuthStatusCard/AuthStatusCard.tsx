@@ -21,10 +21,8 @@ interface Props {
 
 const AuthStatusCard: FC<Props> = ({ status, email, password, confirmPassword }) => {
     const { mutate } = useChangePassword();
-    const { icon, title, description, button_navigate, buttonText } = getCardDataViaStatus(
-        status,
-        email,
-    );
+    const { icon, title, description, button_navigate, buttonText, data_test_id } =
+        getCardDataViaStatus(status, email);
     const navigate = useNavigate();
     const isButtonFullWidth = ![
         AuthStatuses.ERROR_CHECK_EMAIL_NO_EXIST,
@@ -59,7 +57,13 @@ const AuthStatusCard: FC<Props> = ({ status, email, password, confirmPassword })
                     <div className={cn(formStyles.wrapper, styles.boxShadow_unset)}>
                         <Form size='large' onFinish={handleFormFinish}>
                             <SetPasswordInputs />
-                            <Button type='primary' size='large' block htmlType='submit'>
+                            <Button
+                                type='primary'
+                                size='large'
+                                block
+                                htmlType='submit'
+                                data-test-id='change-submit-button'
+                            >
                                 {buttonText}
                             </Button>
                         </Form>
@@ -73,6 +77,7 @@ const AuthStatusCard: FC<Props> = ({ status, email, password, confirmPassword })
                         size='large'
                         block={isButtonFullWidth}
                         onClick={handleNavigate}
+                        data-test-id={data_test_id}
                     >
                         {buttonText}
                     </Button>
