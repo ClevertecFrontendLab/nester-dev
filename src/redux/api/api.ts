@@ -4,7 +4,7 @@ import { UrlConfig } from '@redux/api/helpers/url.config.ts';
 import { HttpMethod } from '@redux/api/helpers/http-methods.ts';
 import { IAuthDto, IAuthResponseDto } from '@redux/api/types.ts';
 import { saveTokenToStorage } from '@redux/api/helpers/helper.ts';
-import { setToken } from '@redux/mainStore.ts';
+import { setShowLoader, setToken } from '@redux/mainStore.ts';
 
 export const api = createApi({
     reducerPath: 'api',
@@ -27,6 +27,16 @@ export const api = createApi({
                 method: HttpMethod.POST,
                 body,
             }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    dispatch(setShowLoader(true));
+                    await queryFulfilled.then(() => {
+                        dispatch(setShowLoader(false));
+                    });
+                } catch (e) {
+                    console.log(e);
+                }
+            },
         }),
 
         login: builder.mutation<IAuthResponseDto, IAuthDto>({
@@ -38,6 +48,7 @@ export const api = createApi({
 
             async onQueryStarted(credentials, { dispatch, queryFulfilled }) {
                 try {
+                    dispatch(setShowLoader(true));
                     await queryFulfilled.then(({ data }) => {
                         dispatch(setToken(data.accessToken));
 
@@ -47,6 +58,8 @@ export const api = createApi({
                     });
                 } catch (e) {
                     dispatch(setToken(''));
+                } finally {
+                    dispatch(setShowLoader(false));
                 }
             },
         }),

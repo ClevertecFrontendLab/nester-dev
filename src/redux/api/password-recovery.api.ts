@@ -7,6 +7,7 @@ import {
 } from '@redux/api/types.ts';
 import { UrlConfig } from '@redux/api/helpers/url.config.ts';
 import { HttpMethod } from '@redux/api/helpers/http-methods.ts';
+import { setShowLoader } from '@redux/mainStore.ts';
 
 export const passwordRecoveryApi = api.injectEndpoints({
     endpoints: (builder) => ({
@@ -16,6 +17,16 @@ export const passwordRecoveryApi = api.injectEndpoints({
                 method: HttpMethod.POST,
                 body,
             }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    dispatch(setShowLoader(true));
+                    await queryFulfilled.then(() => {
+                        dispatch(setShowLoader(false));
+                    });
+                } catch (e) {
+                    console.log(e);
+                }
+            },
         }),
 
         confirmEmail: builder.mutation<IVerifyEmailResponseDto, IConfirmEmailDto>({
@@ -25,6 +36,16 @@ export const passwordRecoveryApi = api.injectEndpoints({
                 credentials: 'include',
                 body,
             }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    dispatch(setShowLoader(true));
+                    await queryFulfilled.then(() => {
+                        dispatch(setShowLoader(false));
+                    });
+                } catch (e) {
+                    console.log(e);
+                }
+            },
         }),
 
         changePassword: builder.mutation<unknown, IChangePasswordDto>({
@@ -34,6 +55,16 @@ export const passwordRecoveryApi = api.injectEndpoints({
                 credentials: 'include',
                 body,
             }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    dispatch(setShowLoader(true));
+                    await queryFulfilled.then(() => {
+                        dispatch(setShowLoader(false));
+                    });
+                } catch (e) {
+                    console.log(e);
+                }
+            },
         }),
     }),
 });

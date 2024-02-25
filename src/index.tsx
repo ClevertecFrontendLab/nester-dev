@@ -11,6 +11,7 @@ import 'normalize.css';
 import 'antd/dist/antd.css';
 import 'antd/dist/antd.variable.min.css';
 import './assets/styles/index.scss';
+import LoaderProvider from '@providers/LoaderProvider.tsx';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -21,7 +22,9 @@ root.render(
     <React.StrictMode>
         <ConfigProvider>
             <Provider store={store}>
-                <HistoryRouter history={history}>{routes}</HistoryRouter>
+                <HistoryRouter history={history}>
+                    <LoaderProvider>{routes}</LoaderProvider>
+                </HistoryRouter>
             </Provider>
         </ConfigProvider>
     </React.StrictMode>,
