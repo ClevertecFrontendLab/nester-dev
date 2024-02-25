@@ -2,6 +2,7 @@ import { useLoginMutation, useRegisterMutation } from '@redux/api/api.ts';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from '@shared/constants.ts';
+import { isErrorWithMessage } from '@utils/index.ts';
 
 export const useAuth = () => {
     const [register, registerData] = useRegisterMutation();
@@ -30,7 +31,10 @@ export const useAuth = () => {
         }
 
         if (registerData.isError) {
-            if (registerData.error.data.statusCode === 409) {
+            if (
+                isErrorWithMessage(registerData.error) &&
+                registerData.error.data.statusCode === 409
+            ) {
                 navigate(`${Paths.AUTH_RESULT}/error-user-exist`, {
                     replace: true,
                     state: { allowAccess: true },

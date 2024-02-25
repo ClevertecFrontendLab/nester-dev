@@ -7,3 +7,18 @@ export interface IAuthDto {
 export interface IAuthResponseDto {
     accessToken: string;
 }
+
+export interface IVerifyEmailResponseDto {
+    email: string;
+    message: string;
+}
+
+export interface IConfirmEmailDto {
+    email: string;
+    code: string;
+}
+
+export interface IChangePasswordDto {
+    password: string;
+    confirmPassword: string;
+}

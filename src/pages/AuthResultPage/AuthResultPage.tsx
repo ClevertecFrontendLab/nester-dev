@@ -1,12 +1,12 @@
 import { FC, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Paths } from '@shared/constants.ts';
 import AuthStatusCard from '@components/ui/AuthStatusCard/AuthStatusCard.tsx';
 import { AuthStatuses } from '@shared/types.ts';
+import { Paths } from '@shared/constants.ts';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface LocationState {
     pathname: AuthStatuses;
-    state: { allowAccess?: boolean };
+    state: { allowAccess?: boolean; email?: string; password?: string; confirmPassword?: string };
 }
 
 const AuthResultPage: FC = () => {
@@ -15,14 +15,19 @@ const AuthResultPage: FC = () => {
 
     useEffect(() => {
         if (!state || !state?.allowAccess) {
-            navigate(Paths.LOGIN, { replace: true });
+            navigate(Paths.LOGIN, { replace: true, state: { allowAccess: false } });
         }
     }, [state, navigate]);
 
     return (
-        <div>
-            <AuthStatusCard status={pathname} />
-        </div>
+        <>
+            <AuthStatusCard
+                status={pathname}
+                email={state?.email}
+                password={state?.password}
+                confirmPassword={state?.confirmPassword}
+            />
+        </>
     );
 };
 

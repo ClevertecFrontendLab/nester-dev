@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '@redux/configure-store.ts';
-import { UrlConfig } from '@redux/api/url.config.ts';
-import { HttpMethod } from '@redux/api/http-methods.ts';
+import { UrlConfig } from '@redux/api/helpers/url.config.ts';
+import { HttpMethod } from '@redux/api/helpers/http-methods.ts';
 import { IAuthDto, IAuthResponseDto } from '@redux/api/types.ts';
-import { saveTokenToStorage } from '@redux/api/helper.ts';
+import { saveTokenToStorage } from '@redux/api/helpers/helper.ts';
 import { setToken } from '@redux/mainStore.ts';
 
 export const api = createApi({
@@ -50,15 +50,7 @@ export const api = createApi({
                 }
             },
         }),
-
-        checkEmail: builder.mutation<unknown, Pick<IAuthDto, 'email'>>({
-            query: (body) => ({
-                url: UrlConfig.CHECK_EMAIL,
-                method: HttpMethod.POST,
-                body,
-            }),
-        }),
     }),
 });
 
-export const { useRegisterMutation, useLoginMutation, useCheckEmailMutation } = api;
+export const { useRegisterMutation, useLoginMutation } = api;

@@ -3,15 +3,24 @@ import { Button, Checkbox, Form, Input, Row } from 'antd';
 import InputEmailPrefix from '@components/ui/form/AuthForm/InputEmailPrefix.tsx';
 
 import styles from './AuthForm.module.scss';
+import { useCheckEmail } from '@hooks/useCheckEmail.ts';
 
 const LoginFields: FC = () => {
     const form = Form.useFormInstance();
-    const isForgotPasswordDisabled = !form.isFieldValidating('login_email');
+    const isForgotPasswordDisabled =
+        !form.isFieldTouched('login_email') || !!form.getFieldError('login_email').length;
+    const { checkEmailMutation } = useCheckEmail();
+
+    const handleClick = () => {
+        const email = form.getFieldValue('login_email');
+
+        checkEmailMutation({ email });
+    };
 
     return (
         <>
             <Form.Item name='login_email' rules={[{ required: true, message: '', type: 'email' }]}>
-                <Input addonBefore={<InputEmailPrefix />} />
+                <Input autoComplete='off' placeholder='E-mail' addonBefore={<InputEmailPrefix />} />
             </Form.Item>
             <Form.Item
                 name='login_password'
@@ -30,7 +39,12 @@ const LoginFields: FC = () => {
                     <Checkbox>Запомнить меня</Checkbox>
                 </Form.Item>
 
-                <Button type='text' to='/' size='small' disabled={isForgotPasswordDisabled}>
+                <Button
+                    type='text'
+                    size='small'
+                    disabled={isForgotPasswordDisabled}
+                    onClick={handleClick}
+                >
                     Забыли пароль?
                 </Button>
             </Row>

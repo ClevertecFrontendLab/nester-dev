@@ -6,6 +6,7 @@ import { api } from '@redux/api/api.ts';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
+    savePreviousLocations: 1,
 });
 
 export const store = configureStore({

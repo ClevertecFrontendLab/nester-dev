@@ -1,8 +1,14 @@
-import { CheckCircleFilled, CloseCircleFilled, WarningFilled } from '@ant-design/icons';
+import {
+    CheckCircleFilled,
+    CloseCircleFilled,
+    ExclamationCircleFilled,
+    WarningFilled,
+} from '@ant-design/icons';
+import { ReactComponent as Error } from '@assets/images/error-image.svg';
 import { AuthStatuses } from '@shared/types.ts';
 import { Paths } from '@shared/constants.ts';
 
-export const getCardDataViaStatus = (status: AuthStatuses) => {
+export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: string) => {
     switch (status) {
         case AuthStatuses.LOGIN_ERROR:
             return {
@@ -52,13 +58,49 @@ export const getCardDataViaStatus = (status: AuthStatuses) => {
                 button_navigate: Paths.LOGIN,
             };
 
+        case AuthStatuses.ERROR_CHECK_EMAIL_NO_EXIST:
+            return {
+                icon: <CloseCircleFilled style={{ color: 'var(--character-light-error)' }} />,
+                title: 'Такой e-mail не зарегистрирован',
+                description: 'Мы не нашли в базе вашего e-mail. Попробуйте войти с другим e-mail.',
+                buttonText: 'Попробовать снова',
+                button_navigate: Paths.LOGIN,
+            };
+
+        case AuthStatuses.EMAIL_CHANGE_ERROR:
+            return {
+                icon: <Error />,
+                title: 'Что-то пошло не так',
+                description: 'Произошла ошибка, попробуйте отправить форму ещё раз.',
+                buttonText: 'Назад',
+                button_navigate: Paths.LOGIN,
+            };
+
+        case AuthStatuses.CONFIRM_EMAIL:
+            return {
+                icon: <ExclamationCircleFilled style={{ color: 'var(--primary-light-6)' }} />,
+                title: 'Введите код \n для восстановления аккаунта',
+                description: `Мы отправили вам на e-mail ${verificationEmail} шестизначный код. Введите его в поле ниже.`,
+                buttonText: '',
+                button_navigate: '',
+            };
+
+        case AuthStatuses.PASSWORD_CHANGE:
+            return {
+                icon: '',
+                title: 'Восстановление аккаунта',
+                description: '',
+                buttonText: 'Сохранить',
+                button_navigate: '',
+            };
+
         case AuthStatuses.PASSWORD_CHANGE_ERROR:
             return {
-                icon: <WarningFilled style={{ color: 'var(--character-light-warning)' }} />,
+                icon: <CloseCircleFilled style={{ color: 'var(--character-light-error)' }} />,
                 title: 'Данные не сохранились',
                 description: 'Что-то пошло не так. Попробуйте ещё раз',
                 buttonText: 'Повторить',
-                button_navigate: '',
+                button_navigate: Paths.CHANGE_PASSWORD,
             };
     }
 };

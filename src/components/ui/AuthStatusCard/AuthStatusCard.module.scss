@@ -24,9 +24,21 @@
     span {
         font-size: 71px;
     }
+
+    &_full {
+        width: auto;
+        height: auto;
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
 }
 
 .title {
+    width: 100%;
     font-weight: 500;
     font-size: 24px;
     line-height: 130%;
@@ -36,9 +48,59 @@
 }
 
 .description {
+    margin-bottom: 0;
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
     text-align: center;
     color: var(--character-light-secondary-45);
+}
+
+.verification {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+
+    &_text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        text-align: center;
+        color: var(--character-light-secondary-45);
+    }
+
+    &_container {
+        height: 40px;
+    }
+
+    &_character {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--character-light-border);
+        border-radius: 2px;
+
+        &_inactive {
+            border: 1px solid var(--character-light-border);
+            border-radius: 2px;
+            background: var(--character-light-primary-inverse);
+        }
+
+        &_filled {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 40px;
+            text-align: center;
+            color: var(--character-light-title-85);
+        }
+    }
+}
+
+.error {
+    border: 1px solid var(--character-light-error);
+}
+
+.boxShadow_unset {
+    box-shadow: none;
 }

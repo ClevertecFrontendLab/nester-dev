@@ -1,15 +1,15 @@
 import { FC, useEffect, useState } from 'react';
-import AuthButtons from '@components/ui/form/AuthForm/AuthButtons.tsx';
 import { Form } from 'antd';
-import { ReactComponent as Logo } from '@assets/icons/Logo-full.svg';
+import AuthButtons from '@components/ui/form/AuthForm/AuthButtons.tsx';
+import { IAuthFormFields } from '@components/ui/form/AuthForm/types.ts';
 import AuthFormTabs from '@components/ui/form/AuthForm/AuthFormTabs.tsx';
+import { ReactComponent as Logo } from '@assets/icons/Logo-full.svg';
 import { useLocation } from 'react-router-dom';
+import { Paths } from '@shared/constants.ts';
+import { useAuth } from '@hooks/useAuth.ts';
+import cn from 'classnames';
 
 import styles from './AuthForm.module.scss';
-import cn from 'classnames';
-import { Paths } from '@shared/constants.ts';
-import { IAuthFormFields } from '@components/ui/form/AuthForm/types.ts';
-import { useAuth } from '@hooks/useAuth.ts';
 
 const AuthForm: FC = () => {
     const { pathname } = useLocation();
