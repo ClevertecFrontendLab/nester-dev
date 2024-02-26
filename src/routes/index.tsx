@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { Paths } from '@shared/constants.ts';
-import { AuthProvider } from '@providers/index.ts';
 import { AuthPage, AuthResultPage, MainPage } from '@pages/index.ts';
 import { AuthLayout } from '@components/index.ts';
+import { AuthProvider } from '@providers/index.ts';
 
 export const routes = (
     <Routes>

@@ -6,7 +6,7 @@ import styles from './AuthLayout.module.scss';
 import { useCheckAuth } from '@hooks/useCheckAuth.ts';
 import { Paths } from '@shared/constants.ts';
 
-const AuthLayout: FC = () => {
+export const AuthLayout: FC = () => {
     const isAuthorized = useCheckAuth();
     const navigate = useNavigate();
 

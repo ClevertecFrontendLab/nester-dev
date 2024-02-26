@@ -22,7 +22,7 @@ root.render(
     <React.StrictMode>
         <ConfigProvider>
             <Provider store={store}>
-                <HistoryRouter history={history}>
+                <HistoryRouter history={history} basename='/'>
                     <LoaderProvider>{routes}</LoaderProvider>
                 </HistoryRouter>
             </Provider>

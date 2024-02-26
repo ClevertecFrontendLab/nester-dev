@@ -11,7 +11,9 @@ export const useChangePassword = () => {
         if (isSuccess) {
             navigate(Paths.CHANGE_PASSWORD_SUCCESS, {
                 replace: true,
-                state: { allowAccess: true },
+                state: {
+                    allowAccess: true,
+                },
             });
         }
 

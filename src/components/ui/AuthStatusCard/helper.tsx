@@ -80,7 +80,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                 description: 'Произошла ошибка, попробуйте отправить форму ещё раз.',
                 buttonText: 'Назад',
                 button_navigate: Paths.LOGIN,
-                data_test_id: 'check-retry-button',
+                data_test_id: 'check-back-button',
             };
 
         case AuthStatuses.CONFIRM_EMAIL:
@@ -109,7 +109,7 @@ export const getCardDataViaStatus = (status: AuthStatuses, verificationEmail?: s
                 title: 'Данные не сохранились',
                 description: 'Что-то пошло не так. Попробуйте ещё раз',
                 buttonText: 'Повторить',
-                button_navigate: Paths.CHANGE_PASSWORD,
+                button_navigate: '',
                 data_test_id: 'change-retry-button',
             };
     }

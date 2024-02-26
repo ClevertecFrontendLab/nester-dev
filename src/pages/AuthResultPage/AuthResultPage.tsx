@@ -6,7 +6,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 interface LocationState {
     pathname: AuthStatuses;
-    state: { allowAccess?: boolean; email?: string; password?: string; confirmPassword?: string };
+    state: {
+        allowAccess?: boolean;
+        email?: string;
+        password?: string;
+        confirmPassword?: string;
+    };
 }
 
 const AuthResultPage: FC = () => {

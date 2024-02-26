@@ -30,11 +30,11 @@ export const api = createApi({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     dispatch(setShowLoader(true));
-                    await queryFulfilled.then(() => {
-                        dispatch(setShowLoader(false));
-                    });
+                    await queryFulfilled;
                 } catch (e) {
                     console.log(e);
+                } finally {
+                    dispatch(setShowLoader(false));
                 }
             },
         }),
@@ -58,8 +58,6 @@ export const api = createApi({
                     });
                 } catch (e) {
                     dispatch(setToken(''));
-                } finally {
-                    dispatch(setShowLoader(false));
                 }
             },
         }),

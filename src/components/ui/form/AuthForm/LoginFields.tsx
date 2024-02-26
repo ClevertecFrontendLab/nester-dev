@@ -1,25 +1,45 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Button, Checkbox, Form, Input, Row } from 'antd';
 import InputEmailPrefix from '@components/ui/form/AuthForm/InputEmailPrefix.tsx';
 
 import styles from './AuthForm.module.scss';
 import { useCheckEmail } from '@hooks/useCheckEmail.ts';
+import { useLocation } from 'react-router-dom';
+import { PASSWORD_VALIDATION_PATTERN, Paths } from '@shared/constants.ts';
 
 const LoginFields: FC = () => {
+    const location = useLocation();
     const form = Form.useFormInstance();
-    const isForgotPasswordDisabled =
-        !form.isFieldTouched('login_email') || !!form.getFieldError('login_email').length;
     const { checkEmailMutation } = useCheckEmail();
 
-    const handleClick = () => {
-        const email = form.getFieldValue('login_email');
+    useEffect(() => {
+        if (location.pathname === Paths.LOGIN && location.state?.email) {
+            checkEmailMutation({ email: location.state?.email });
+        }
+    }, [location, checkEmailMutation]);
 
-        checkEmailMutation({ email });
+    const handleClick = () => {
+        const isForgotButtonDisabled =
+            !form.getFieldValue('login_email') || !!form.getFieldError('login_email').length;
+
+        if (!isForgotButtonDisabled) {
+            const email = form.getFieldValue('login_email');
+            checkEmailMutation({ email });
+        }
     };
 
     return (
         <>
-            <Form.Item name='login_email' rules={[{ required: true, message: '', type: 'email' }]}>
+            <Form.Item
+                name='login_email'
+                rules={[
+                    {
+                        required: location.pathname === Paths.LOGIN,
+                        message: '',
+                        type: 'email',
+                    },
+                ]}
+            >
                 <Input
                     autoComplete='off'
                     placeholder='E-mail'
@@ -31,8 +51,14 @@ const LoginFields: FC = () => {
                 name='login_password'
                 rules={[
                     {
-                        required: true,
+                        required: location.pathname === Paths.LOGIN,
                         message: '',
+                        validator(_, value) {
+                            if (!PASSWORD_VALIDATION_PATTERN.test(value)) {
+                                return Promise.reject();
+                            }
+                            return Promise.resolve();
+                        },
                     },
                 ]}
             >
@@ -47,7 +73,6 @@ const LoginFields: FC = () => {
                 <Button
                     type='text'
                     size='small'
-                    disabled={isForgotPasswordDisabled}
                     onClick={handleClick}
                     data-test-id='login-forgot-button'
                 >

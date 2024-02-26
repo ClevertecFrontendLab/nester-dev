@@ -20,11 +20,11 @@ export const passwordRecoveryApi = api.injectEndpoints({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     dispatch(setShowLoader(true));
-                    await queryFulfilled.then(() => {
-                        dispatch(setShowLoader(false));
-                    });
+                    await queryFulfilled;
                 } catch (e) {
                     console.log(e);
+                } finally {
+                    dispatch(setShowLoader(false));
                 }
             },
         }),
@@ -39,11 +39,11 @@ export const passwordRecoveryApi = api.injectEndpoints({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     dispatch(setShowLoader(true));
-                    await queryFulfilled.then(() => {
-                        dispatch(setShowLoader(false));
-                    });
+                    await queryFulfilled;
                 } catch (e) {
                     console.log(e);
+                } finally {
+                    dispatch(setShowLoader(false));
                 }
             },
         }),
@@ -58,11 +58,11 @@ export const passwordRecoveryApi = api.injectEndpoints({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     dispatch(setShowLoader(true));
-                    await queryFulfilled.then(() => {
-                        dispatch(setShowLoader(false));
-                    });
+                    await queryFulfilled;
                 } catch (e) {
                     console.log(e);
+                } finally {
+                    dispatch(setShowLoader(false));
                 }
             },
         }),

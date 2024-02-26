@@ -20,25 +20,23 @@ const VerificationBlock: FC<Props> = ({ email }) => {
         if (isSuccess) {
             navigate(Paths.CHANGE_PASSWORD, { replace: true, state: { allowAccess: true } });
         }
-
-        if (isError) {
-            setCode('');
-        }
-    }, [isError, isSuccess, navigate]);
+    }, [isSuccess, navigate]);
 
     const handleComplete = (code: string) => {
         if (email && code) {
             mutate({ code, email });
+            setCode('');
         }
     };
 
     return (
         <div className={styles.verification}>
             <VerificationInput
+                inputProps={{ 'data-test-id': 'verification-input' }}
                 placeholder=''
                 autoFocus
+                validChars='0-9'
                 onComplete={handleComplete}
-                data-test-id='verification-input'
                 value={code}
                 onChange={(code) => setCode(code)}
                 classNames={{

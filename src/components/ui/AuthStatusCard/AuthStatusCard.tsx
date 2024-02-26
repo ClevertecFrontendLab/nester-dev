@@ -5,12 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { AuthStatuses } from '@shared/types.ts';
 import VerificationBlock from '@components/ui/AuthStatusCard/VerificationBlock.tsx';
 import SetPasswordInputs from '@components/ui/form/AuthForm/SetPasswordInputs.tsx';
-import cn from 'classnames';
-
-import styles from './AuthStatusCard.module.scss';
-import formStyles from '../form/AuthForm/AuthForm.module.scss';
 import { IPasswordReset } from '@components/ui/form/AuthForm/types.ts';
 import { useChangePassword } from '@hooks/useChangePassword.ts';
+import { useAuth } from '@hooks/useAuth.ts';
+import { Paths } from '@shared/constants.ts';
+import cn from 'classnames';
+
+import formStyles from '../form/AuthForm/AuthForm.module.scss';
+import styles from './AuthStatusCard.module.scss';
 
 interface Props {
     status: AuthStatuses;
@@ -21,6 +23,8 @@ interface Props {
 
 const AuthStatusCard: FC<Props> = ({ status, email, password, confirmPassword }) => {
     const { mutate } = useChangePassword();
+    const { register } = useAuth();
+
     const { icon, title, description, button_navigate, buttonText, data_test_id } =
         getCardDataViaStatus(status, email);
     const navigate = useNavigate();
@@ -32,12 +36,33 @@ const AuthStatusCard: FC<Props> = ({ status, email, password, confirmPassword })
     const iconFull = status === AuthStatuses.EMAIL_CHANGE_ERROR;
 
     useEffect(() => {
-        if (password && confirmPassword) {
+        if (password && confirmPassword && status === AuthStatuses.PASSWORD_CHANGE) {
             mutate({ password, confirmPassword });
         }
-    }, [password, confirmPassword, mutate]);
+
+        if (email && password && status === AuthStatuses.REGISTER_ERROR) {
+            register({ email, password });
+        }
+    }, [email, password, confirmPassword, status, mutate, register]);
 
     const handleNavigate = () => {
+        if (status === AuthStatuses.EMAIL_CHANGE_ERROR && email) {
+            navigate(Paths.LOGIN, { state: { email } });
+            return;
+        }
+
+        if (status === AuthStatuses.PASSWORD_CHANGE_ERROR) {
+            navigate(Paths.CHANGE_PASSWORD, {
+                replace: true,
+                state: {
+                    allowAccess: true,
+                    password,
+                    confirmPassword,
+                },
+            });
+            return;
+        }
+
         if (button_navigate) {
             navigate(button_navigate, { replace: true });
         }

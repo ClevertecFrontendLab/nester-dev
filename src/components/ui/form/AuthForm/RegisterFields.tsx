@@ -10,7 +10,7 @@ const RegisterFields: FC = () => (
             rules={[{ required: true, message: '', type: 'email' }]}
             data-test-id='registration-email'
         >
-            <Input addonBefore={<InputEmailPrefix />} />
+            <Input addonBefore={<InputEmailPrefix />} autoComplete='off' />
         </Form.Item>
 
         <SetPasswordInputs />
