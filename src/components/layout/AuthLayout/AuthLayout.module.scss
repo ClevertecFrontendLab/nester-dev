@@ -1,0 +1,20 @@
+.wrapper {
+    :global {
+        .ant-layout {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 16px;
+            background: url("/src/assets/images/enter_page_light.png") no-repeat center center/cover;
+        }
+    }
+}
+
+.blur {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(12px);
+    background: rgba(121, 156, 212, 0.5);
+}

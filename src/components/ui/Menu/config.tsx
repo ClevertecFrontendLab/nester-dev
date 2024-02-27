@@ -23,18 +23,18 @@ function getItem(
 export const menuItems: MenuProps['items'] = [
     getItem(
         'Календарь',
-        'sub1',
+        'calendar',
         <CalendarTwoTone
             style={{ fontSize: 16 }}
             twoToneColor={['var(--primary-light-9)', 'var(--primary-light-9)']}
         />,
     ),
 
-    getItem('Тренировки', 'sub2', <HeartFilled style={{ fontSize: 16 }} />),
+    getItem('Тренировки', 'workouts', <HeartFilled style={{ fontSize: 16 }} />),
 
-    getItem('Достижения', 'sub3', <TrophyFilled style={{ fontSize: 16 }} />),
+    getItem('Достижения', 'achievements', <TrophyFilled style={{ fontSize: 16 }} />),
 
-    getItem('Профиль', 'sub4', <IdcardOutlined style={{ fontSize: 16 }} />),
+    getItem('Профиль', 'profile', <IdcardOutlined style={{ fontSize: 16 }} />),
 
-    getItem('Выход', 'sub5', <Exit style={{ fontSize: 16 }} />),
+    getItem('Выход', 'logout', <Exit style={{ fontSize: 16 }} />),
 ];

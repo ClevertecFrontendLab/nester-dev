@@ -1,13 +1,12 @@
 import { FC } from 'react';
-import { Button, Layout, Row, Typography } from 'antd';
+import { Button, Grid, Layout, Row, Typography } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
-import useMediaQuery from '@hooks/useMediaQuery.ts';
-
 import styles from './Header.module.scss';
 
+const { useBreakpoint } = Grid;
+
 const Header: FC = () => {
-    const isLargerMd = useMediaQuery('(min-width: 992px)');
-    const isLessXs = useMediaQuery('(max-width: 480px)');
+    const { xs, sm, lg } = useBreakpoint();
 
     return (
         <div className={styles.header}>
@@ -20,11 +19,11 @@ const Header: FC = () => {
                     </Typography.Title>
 
                     <Button
-                        type={!isLessXs ? 'text' : 'default'}
-                        icon={(isLargerMd || isLessXs) && <SettingOutlined />}
-                        shape={isLessXs ? 'circle' : undefined}
+                        type={!xs ? 'text' : 'default'}
+                        icon={(lg || xs) && <SettingOutlined />}
+                        shape={xs ? 'circle' : undefined}
                     >
-                        {!isLessXs && 'Настройки'}
+                        {sm && 'Настройки'}
                     </Button>
                 </Row>
             </Layout.Header>

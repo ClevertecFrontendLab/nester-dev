@@ -15,13 +15,15 @@ export default defineConfig({
         alias: {
             '@public': path.resolve(__dirname, 'public'),
             '@components': path.resolve(__dirname, 'src/components'),
-            '@constants': path.resolve(__dirname, 'src/constants'),
+            '@constants': path.resolve(__dirname, 'src/shared'),
             '@hooks': path.resolve(__dirname, 'src/hooks'),
             '@pages': path.resolve(__dirname, 'src/pages'),
             '@redux': path.resolve(__dirname, 'src/redux'),
             '@types': path.resolve(__dirname, 'src/types'),
             '@utils': path.resolve(__dirname, 'src/utils'),
             '@assets': path.resolve(__dirname, 'src/assets'),
+            '@shared': path.resolve(__dirname, 'src/shared'),
+            '@providers': path.resolve(__dirname, 'src/providers'),
         },
     },
 });

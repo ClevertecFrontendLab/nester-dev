@@ -1,11 +1,6 @@
 @import "colors";
 @import "fonts";
 
-:root {
-    --font-family: "Inter", sans-serif;
-    --second-family: "Roboto", sans-serif;
-}
-
 body {
     font-family: var(--font-family);
 }

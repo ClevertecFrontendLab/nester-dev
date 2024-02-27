@@ -1,4 +1,4 @@
-@import "src/assets/styles/breakpoints";
+@import "src/assets/styles/_mixins.scss";
 
 .footer {
     padding-bottom: 42px;
@@ -12,7 +12,7 @@
             padding: 0 24px;
             background: transparent;
 
-            @media (max-width: $breakpoint-sm) {
+            @include sm {
                 flex-direction: column-reverse;
                 align-items: center;
                 row-gap: 24px;
