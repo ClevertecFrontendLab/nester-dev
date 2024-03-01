@@ -11,7 +11,6 @@ const Header: FC = () => {
     return (
         <div className={styles.header}>
             <Layout.Header>
-                <Typography.Text className={styles.header_breadcrumb}>Главная</Typography.Text>
                 <Row wrap={false}>
                     <Typography.Title level={1}>
                         Приветствуем тебя в CleverFit — приложении,

@@ -1,0 +1,29 @@
+.breadcrumbs {
+    padding: 16px 0 16px 24px;
+    background: var(--primary-light-1);
+    line-height: 130%;
+    color: var(--character-light-title-85);
+
+    :global {
+        .ant-typography {
+            font-weight: 400;
+            font-size: 14px;
+            color: var(--character-light-title-85);
+        }
+    }
+
+    &_from {
+        :global(.ant-typography) {
+            color: var(--character-light-secondary-45);
+        }
+    }
+
+}
+
+.divider {
+    margin: 0 8px;
+    color: var(--character-light-secondary-45)
+}
+
+
+

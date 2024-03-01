@@ -7,6 +7,7 @@ export enum Paths {
     CHANGE_PASSWORD = '/auth/change-password',
     CHANGE_PASSWORD_SUCCESS = '/result/success-change-password',
     CHANGE_PASSWORD_ERROR = '/result/error-change-password',
+    FEEDBACKS = '/feedbacks',
 }
 
 export const PASSWORD_VALIDATION_PATTERN = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;

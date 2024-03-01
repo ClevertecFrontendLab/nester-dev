@@ -1,7 +1,8 @@
 import { FC, useEffect } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Paths } from '@shared/constants.ts';
 import { useCheckAuth } from '@hooks/useCheckAuth.ts';
+import PageLayout from '@components/layout/PageLayout/PageLayout.tsx';
 
 export const AuthProvider: FC = () => {
     const isAuthorized = useCheckAuth();
@@ -16,7 +17,7 @@ export const AuthProvider: FC = () => {
         }
     }, [location.pathname, navigate, isAuthorized]);
 
-    return !isAuthorized ? null : <Outlet />;
+    return !isAuthorized ? null : <PageLayout />;
 };
 
 export default AuthProvider;

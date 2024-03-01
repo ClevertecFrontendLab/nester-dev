@@ -1,0 +1,13 @@
+@import "src/assets/styles/_mixins.scss";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 24px;
+    height: 100%;
+
+
+    @include md {
+        padding: 24px 16px;
+    }
+}
