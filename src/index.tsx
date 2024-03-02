@@ -11,7 +11,7 @@ import 'normalize.css';
 import 'antd/dist/antd.css';
 import 'antd/dist/antd.variable.min.css';
 import './assets/styles/index.scss';
-import LoaderProvider from '@providers/LoaderProvider.tsx';
+import { LoaderProvider, ModalProvider } from '@providers/index.ts';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -23,7 +23,10 @@ root.render(
         <ConfigProvider>
             <Provider store={store}>
                 <HistoryRouter history={history} basename='/'>
-                    <LoaderProvider>{routes}</LoaderProvider>
+                    <LoaderProvider>
+                        <ModalProvider />
+                        {routes}
+                    </LoaderProvider>
                 </HistoryRouter>
             </Provider>
         </ConfigProvider>

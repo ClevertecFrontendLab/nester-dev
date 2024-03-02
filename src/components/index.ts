@@ -7,3 +7,4 @@ export { default as AuthLayout } from './layout/AuthLayout/AuthLayout';
 export { default as Loader } from './ui/Loader/Loader';
 export { default as Breadcrumbs } from './ui/Breadcrumbs/Breadcrumbs';
 export { default as NoFeedbacksPlaceholder } from '@components/ui/NoFeedbacksPlaceholder/NoFeedbacksPlaceholder.tsx';
+export { default as FeedbackModal } from '@components/ui/modals/FeedbackModal/FeedbackModal.tsx';

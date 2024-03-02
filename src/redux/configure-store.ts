@@ -16,7 +16,7 @@ export const store = configureStore({
         [api.reducerPath]: api.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(routerMiddleware, api.middleware),
+        getDefaultMiddleware({ serializableCheck: false }).concat(routerMiddleware, api.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
