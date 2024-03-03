@@ -41,6 +41,7 @@ export const feedbackApi = api.injectEndpoints({
                     dispatch(setShowLoader(false));
                 }
             },
+            invalidatesTags: () => [{ type: 'Feedbacks' }],
         }),
     }),
 });

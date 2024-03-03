@@ -31,6 +31,7 @@ const FeedbackModal: FC = () => {
                     block={xs}
                     size='large'
                     onClick={() => mutate({ rating: stars, message: text })}
+                    data-test-id='new-review-submit-button'
                 >
                     Опубликовать
                 </Button>,

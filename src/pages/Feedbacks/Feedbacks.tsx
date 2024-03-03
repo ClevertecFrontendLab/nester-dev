@@ -1,15 +1,11 @@
 import { FC } from 'react';
 import { FeedbacksList, NoFeedbacksPlaceholder } from '@components/index.ts';
+import { useGetFeedbacks } from '@hooks/useGetFeedbacks.tsx';
+
 import styles from './Feedbacks.module.scss';
-import { useGetFeedbacksQuery } from '@redux/api/feedback.api.ts';
-import { Modal } from 'antd';
 
 const Feedbacks: FC = () => {
-    const { data, isError } = useGetFeedbacksQuery();
-
-    if (isError) {
-        return <Modal></Modal>;
-    }
+    const { data } = useGetFeedbacks();
 
     return (
         <div className={styles.wrapper}>

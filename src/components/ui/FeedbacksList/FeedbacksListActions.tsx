@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { Button } from 'antd';
-
-import styles from './FeedbacksList.module.scss';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
 import { setModal } from '@redux/mainStore.ts';
 import { FeedbackModal } from '@components/index.ts';
+
+import styles from './FeedbacksList.module.scss';
 
 interface Props {
     isUnfolded: boolean;
@@ -18,13 +18,19 @@ const FeedbacksListActions: FC<Props> = ({ unfoldFeedbacks, isUnfolded }) => {
     return (
         <div className={styles.actions}>
             <Button
+                data-test-id='write-review'
                 type='primary'
                 size='large'
                 onClick={() => dispatch(setModal(<FeedbackModal />))}
             >
                 Написать отзыв
             </Button>
-            <Button type='text' size='large' onClick={unfoldFeedbacks}>
+            <Button
+                data-test-id='all-reviews-button'
+                type='text'
+                size='large'
+                onClick={unfoldFeedbacks}
+            >
                 {buttonText}
             </Button>
         </div>

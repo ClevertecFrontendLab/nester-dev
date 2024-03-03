@@ -70,6 +70,7 @@ export const useLeaveFeedback = () => {
                             extra={[
                                 <Row wrap={false}>
                                     <Button
+                                        data-test-id='write-review-not-saved-modal'
                                         type='primary'
                                         size='large'
                                         block

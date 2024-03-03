@@ -1,63 +1,23 @@
-import { FC, useEffect, useState } from 'react';
-import { Button, Card, Layout, Modal, Result, Row } from 'antd';
+import { FC } from 'react';
+import { Button, Card, Layout, Row } from 'antd';
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
-import cardStyles from '../MainPageContent/MainPageContent.module.scss';
-
-import styles from './Footer.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from '@shared/constants.ts';
-import { useGetFeedbacksQuery } from '@redux/api/feedback.api.ts';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
-import { setModal } from '@redux/mainStore.ts';
+
+import cardStyles from '../MainPageContent/MainPageContent.module.scss';
+import styles from './Footer.module.scss';
 
 const Footer: FC = () => {
     const navigate = useNavigate();
-    const dispatch = useAppDispatch();
-    const [isViewFeedbacks, setIsViewFeedbacks] = useState(false);
-    const { isError, isSuccess } = useGetFeedbacksQuery(undefined, { skip: !isViewFeedbacks });
-
-    useEffect(() => {
-        if (isSuccess) {
-            navigate(Paths.FEEDBACKS);
-        }
-
-        if (isError) {
-            dispatch(
-                setModal(
-                    <Modal
-                        centered
-                        open
-                        maskClosable
-                        onCancel={() => dispatch(setModal(null))}
-                        maskStyle={{
-                            backdropFilter: 'blur(12px)',
-                            background: 'rgba(121, 156, 212, 0.1)',
-                        }}
-                        footer={null}
-                    >
-                        <Result
-                            status='500'
-                            title='Что-то пошло не так'
-                            subTitle='Произошла ошибка, попробуйте ещё раз.'
-                            extra={
-                                <Button type='primary' onClick={() => dispatch(setModal(null))}>
-                                    Назад
-                                </Button>
-                            }
-                        />
-                    </Modal>,
-                ),
-            );
-        }
-    }, [isSuccess, isError, dispatch, navigate]);
 
     return (
         <div className={styles.footer}>
             <Layout.Footer>
                 <Button
+                    data-test-id='see-reviews'
                     type='link'
                     className={styles.reviews}
-                    onClick={() => setIsViewFeedbacks(true)}
+                    onClick={() => navigate(Paths.FEEDBACKS)}
                 >
                     Смотреть отзывы
                 </Button>
