@@ -3,6 +3,7 @@ import { UrlConfig } from '@redux/api/helpers/url.config.ts';
 import { HttpMethod } from '@redux/api/helpers/http-methods.ts';
 import { setShowLoader } from '@redux/mainStore.ts';
 import { IFeedback } from '@shared/feedback.interface.ts';
+import { ILeaveFeedbackDto } from '@redux/api/types.ts';
 
 export const feedbackApi = api.injectEndpoints({
     endpoints: (builder) => ({
@@ -21,8 +22,27 @@ export const feedbackApi = api.injectEndpoints({
                     dispatch(setShowLoader(false));
                 }
             },
+            providesTags: () => [{ type: 'Feedbacks' }],
+        }),
+
+        leaveFeedback: builder.mutation<void, ILeaveFeedbackDto>({
+            query: (body) => ({
+                url: UrlConfig.FEEDBACK,
+                method: HttpMethod.POST,
+                body,
+            }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    dispatch(setShowLoader(true));
+                    await queryFulfilled;
+                } catch (e) {
+                    console.log(e);
+                } finally {
+                    dispatch(setShowLoader(false));
+                }
+            },
         }),
     }),
 });
 
-export const { useGetFeedbacksQuery } = feedbackApi;
+export const { useGetFeedbacksQuery, useLeaveFeedbackMutation } = feedbackApi;

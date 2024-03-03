@@ -6,6 +6,8 @@ interface IMainStoreInitialState {
     token: string;
     showLoader: boolean;
     modal: ReactNode | null;
+    rating: number;
+    feedback: string;
 }
 
 const initialState: IMainStoreInitialState = {
@@ -13,6 +15,8 @@ const initialState: IMainStoreInitialState = {
     token: '',
     showLoader: false,
     modal: null,
+    rating: 0,
+    feedback: '',
 };
 
 const mainStoreSlice = createSlice({
@@ -34,9 +38,16 @@ const mainStoreSlice = createSlice({
         setModal: (state, action: PayloadAction<ReactNode | null>) => {
             state.modal = action.payload;
         },
+        setRating: (state, action: PayloadAction<number>) => {
+            state.rating = action.payload;
+        },
+        setFeedback: (state, action: PayloadAction<string>) => {
+            state.feedback = action.payload;
+        },
     },
 });
 
 export default mainStoreSlice.reducer;
 
-export const { toggleAside, setToken, setShowLoader, setModal } = mainStoreSlice.actions;
+export const { toggleAside, setToken, setShowLoader, setModal, setRating, setFeedback } =
+    mainStoreSlice.actions;

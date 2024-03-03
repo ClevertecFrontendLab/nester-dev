@@ -7,7 +7,7 @@ export const useCheckAuth = () => {
     const localStorageToken = getAccessToken();
     const dispatch = useAppDispatch();
 
-    if (token || localStorageToken) {
+    if (localStorageToken) {
         dispatch(setToken(token || localStorageToken || ''));
     }
 

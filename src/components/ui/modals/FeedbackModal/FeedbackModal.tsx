@@ -1,17 +1,20 @@
 import { FC, useState } from 'react';
 import { Button, Grid, Modal, Rate } from 'antd';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { StarFilled, StarOutlined } from '@ant-design/icons';
 import TextArea from 'antd/es/input/TextArea';
 import { setModal } from '@redux/mainStore.ts';
+import { useLeaveFeedback } from '@hooks/useLeaveFeedback.tsx';
 
 const { useBreakpoint } = Grid;
 
 const FeedbackModal: FC = () => {
-    const [stars, setStars] = useState(0);
-    const [feedback, setFeedback] = useState('');
+    const { rating, feedback } = useAppSelector((state) => state.mainState);
+    const [stars, setStars] = useState(rating);
+    const [text, setText] = useState(feedback);
     const { xs } = useBreakpoint();
     const dispatch = useAppDispatch();
+    const { mutate } = useLeaveFeedback();
 
     return (
         <Modal
@@ -22,7 +25,13 @@ const FeedbackModal: FC = () => {
             onCancel={() => dispatch(setModal(null))}
             maskStyle={{ backdropFilter: 'blur(12px)', background: 'rgba(121, 156, 212, 0.1)' }}
             footer={[
-                <Button type='primary' disabled={!stars && !feedback} block={xs} size='large'>
+                <Button
+                    type='primary'
+                    disabled={!stars}
+                    block={xs}
+                    size='large'
+                    onClick={() => mutate({ rating: stars, message: text })}
+                >
                     Опубликовать
                 </Button>,
             ]}
@@ -49,7 +58,7 @@ const FeedbackModal: FC = () => {
                 }}
             />
 
-            <TextArea size='small' value={feedback} onChange={(e) => setFeedback(e.target.value)} />
+            <TextArea size='small' value={text} onChange={(e) => setText(e.target.value)} />
         </Modal>
     );
 };

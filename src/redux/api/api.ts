@@ -8,6 +8,7 @@ import { setShowLoader, setToken } from '@redux/mainStore.ts';
 
 export const api = createApi({
     reducerPath: 'api',
+    tagTypes: ['Feedbacks'],
     baseQuery: fetchBaseQuery({
         baseUrl: `${import.meta.env.VITE_API_URL}`,
         prepareHeaders: (headers, { getState }) => {

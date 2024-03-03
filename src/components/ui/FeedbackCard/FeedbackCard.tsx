@@ -7,7 +7,7 @@ import { IFeedback } from '@shared/feedback.interface.ts';
 const FeedbackCard: FC<IFeedback> = ({ fullName, imageSrc, rating, message, createdAt }) => {
     return (
         <div className={styles.card}>
-            <FeedbackUser fullName={fullName || 'Дмитрий Нестер'} imageSrc={imageSrc} />
+            <FeedbackUser fullName={fullName} imageSrc={imageSrc} />
 
             <FeedbackInfo rating={rating} message={message} createdAt={createdAt} />
         </div>
