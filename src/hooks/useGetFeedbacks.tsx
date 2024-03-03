@@ -27,9 +27,11 @@ export const useGetFeedbacks = () => {
                         footer={null}
                     >
                         <Result
+                            style={{ padding: '40px 0 32px 0' }}
                             status='500'
                             title='Что-то пошло не так'
                             subTitle='Произошла ошибка, попробуйте ещё раз.'
+                            size='large'
                             extra={
                                 <Button
                                     type='primary'

@@ -64,6 +64,7 @@ export const useLeaveFeedback = () => {
                         footer={null}
                     >
                         <Result
+                            style={{ padding: '40px 0 32px 0' }}
                             status='error'
                             title='Данные не сохранились'
                             subTitle='Что-то пошло не так. Попробуйте ещё раз.'

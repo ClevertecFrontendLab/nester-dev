@@ -5,4 +5,5 @@ export enum UrlConfig {
     CONFIRM_EMAIL = '/auth/confirm-email',
     CHANGE_PASSWORD = '/auth/change-password',
     FEEDBACK = '/feedback',
+    LOGIN_GOOGLE = '/auth/google',
 }
