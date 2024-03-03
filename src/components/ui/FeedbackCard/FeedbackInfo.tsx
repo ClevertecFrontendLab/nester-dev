@@ -1,22 +1,32 @@
 import { FC } from 'react';
 import { Rate } from 'antd';
 import styles from './FeedbackCard.module.scss';
-import { StarOutlined } from '@ant-design/icons';
+import { StarFilled, StarOutlined } from '@ant-design/icons';
+import { IFeedback } from '@shared/feedback.interface.ts';
+import { format } from 'date-fns';
 
-const FeedbackInfo: FC = () => {
+const FeedbackInfo: FC<Omit<IFeedback, 'imageSrc' | 'fullName' | 'id'>> = ({
+    createdAt,
+    message,
+    rating,
+}) => {
     return (
         <div className={styles.info}>
             <div>
-                <Rate character={<StarOutlined />} />
-                <span className={styles.date}>17.10.2023</span>
+                <Rate
+                    disabled
+                    character={({ index }) => {
+                        if (Number(index) < rating) {
+                            return <StarFilled />;
+                        }
+                        return <StarOutlined style={{ color: 'var(--character-light-warning)' }} />;
+                    }}
+                    value={rating}
+                />
+                <span className={styles.date}>{format(createdAt, 'dd.MM.yyyy')}</span>
             </div>
 
-            <p className={styles.text}>
-                Я очень довольна этим приложением! Оно помогает мне следить за своим здоровьем и
-                физической формой, предлагая разнообразные упражнения и питание. Я люблю, что
-                приложение адаптируется к моему уровню и целям, и дает мне полезные советы и
-                обратную связь. Я рекомендую это приложение всем, кто хочет улучшить свою жизнь!
-            </p>
+            {message && <p className={styles.text}>{message}</p>}
         </div>
     );
 };

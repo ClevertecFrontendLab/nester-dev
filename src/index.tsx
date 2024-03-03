@@ -24,8 +24,8 @@ root.render(
             <Provider store={store}>
                 <HistoryRouter history={history} basename='/'>
                     <LoaderProvider>
-                        <ModalProvider />
                         {routes}
+                        <ModalProvider />
                     </LoaderProvider>
                 </HistoryRouter>
             </Provider>

@@ -22,7 +22,7 @@ const FeedbackModal: FC = () => {
             onCancel={() => dispatch(setModal(null))}
             maskStyle={{ backdropFilter: 'blur(12px)', background: 'rgba(121, 156, 212, 0.1)' }}
             footer={[
-                <Button type='primary' disabled={!stars && !feedback} block={xs}>
+                <Button type='primary' disabled={!stars && !feedback} block={xs} size='large'>
                     Опубликовать
                 </Button>,
             ]}
@@ -33,9 +33,19 @@ const FeedbackModal: FC = () => {
                 onChange={setStars}
                 character={({ index }) => {
                     if (Number(index) < stars) {
-                        return <StarFilled style={{ color: 'var(--character-light-warning)' }} />;
+                        return (
+                            <StarFilled
+                                key={index}
+                                style={{ color: 'var(--character-light-warning)' }}
+                            />
+                        );
                     }
-                    return <StarOutlined style={{ color: 'var(--character-light-warning)' }} />;
+                    return (
+                        <StarOutlined
+                            key={index}
+                            style={{ color: 'var(--character-light-warning)' }}
+                        />
+                    );
                 }}
             />
 

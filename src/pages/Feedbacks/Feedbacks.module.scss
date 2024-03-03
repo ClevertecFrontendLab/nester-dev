@@ -3,8 +3,9 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    padding: 24px 24px;
-    height: 100%;
+    padding: 24px 24px 42px;
+    height: calc(100vh - 50px);
+    max-height: 100vh;
 
 
     @include md {

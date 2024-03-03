@@ -9,3 +9,4 @@ export { default as Breadcrumbs } from './ui/Breadcrumbs/Breadcrumbs';
 export { default as NoFeedbacksPlaceholder } from '@components/ui/NoFeedbacksPlaceholder/NoFeedbacksPlaceholder.tsx';
 export { default as FeedbackModal } from '@components/ui/modals/FeedbackModal/FeedbackModal.tsx';
 export { default as FeedbackCard } from '@components/ui/FeedbackCard/FeedbackCard.tsx';
+export { default as FeedbacksList } from '@components/ui/FeedbacksList/FeedbacksList.tsx';
