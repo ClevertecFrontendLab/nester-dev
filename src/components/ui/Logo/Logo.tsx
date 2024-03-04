@@ -3,12 +3,12 @@ import cn from 'classnames';
 
 import { ReactComponent as Clever } from '@assets/icons/Clever.svg';
 import { ReactComponent as Fit } from '@assets/icons/fit.svg';
-import { useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
+import { useMainStateSelector } from '@hooks/typed-react-redux-hooks.ts';
 
 import styles from '../../layout/Aside/Aside.module.scss';
 
 const Logo: FC = () => {
-    const { isAsideCollapsed } = useAppSelector((state) => state.mainState);
+    const { isAsideCollapsed } = useMainStateSelector();
 
     return (
         <div className={cn(styles.logo, isAsideCollapsed && styles.logo_collapsed)}>

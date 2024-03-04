@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { Button } from 'antd';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
 import { setModal } from '@redux/mainStore.ts';
-import { FeedbackModal } from '@components/index.ts';
 
 import styles from './NoFeedbacksPlaceholder.module.scss';
+import { ModalTypes } from '@shared/constants.ts';
 
 const NoFeedbacksPlaceholder: FC = () => {
     const dispatch = useAppDispatch();
@@ -22,11 +22,11 @@ const NoFeedbacksPlaceholder: FC = () => {
             </div>
 
             <Button
+                onClick={() => dispatch(setModal(ModalTypes.FEEDBACK))}
                 data-test-id='write-review'
                 type='primary'
                 size='large'
                 block={false}
-                onClick={() => dispatch(setModal(<FeedbackModal />))}
             >
                 Написать отзыв
             </Button>

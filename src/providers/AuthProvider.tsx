@@ -15,7 +15,7 @@ export const AuthProvider: FC = () => {
     useEffect(() => {
         if (!isAuthorized && !token && location.pathname !== Paths.LOGIN) {
             navigate(Paths.LOGIN);
-        } else if (isAuthorized && location.pathname === '/') {
+        } else if (isAuthorized && location.pathname === Paths.ROOT) {
             navigate(Paths.HOME);
         }
 
@@ -25,7 +25,7 @@ export const AuthProvider: FC = () => {
         }
     }, [location.pathname, navigate, isAuthorized, token]);
 
-    return !isAuthorized ? null : <PageLayout />;
+    return isAuthorized ? <PageLayout /> : null;
 };
 
 export default AuthProvider;

@@ -1,49 +1,52 @@
 @import "src/assets/styles/_mixins.scss";
+@import "src/assets/styles/variables/_spacing";
+@import "src/assets/styles/variables/_font";
+
 
 .wrapper {
-    padding: 24px 24px;
+    padding: $offset-24 $offset-24;
     max-width: 800px;
 
     p {
-        margin-bottom: 0;
+        margin-bottom: $offset-0;
     }
 
     @include md {
-        padding: 24px 16px;
+        padding: $offset-24 $offset-16;
     }
 }
 
 .description {
     :global {
         .ant-card {
-            font-size: 16px;
+            font-size: $font-base;
             line-height: 130%;
             color: var(--primary-light-9);
         }
 
         .ant-card-body {
             @include md {
-                padding: 16px 31px 16px 16px;
+                padding: $offset-16 $offset-30 $offset-16 $offset-16;
             }
         }
     }
 }
 
 .heading {
-    margin-top: 24px;
+    margin-top: $offset-24;
 
     :global {
         .ant-typography {
-            margin-bottom: 0;
-            font-weight: 500;
-            font-size: 20px;
+            margin-bottom: $offset-0;
+            font-weight: $FW-medium;
+            font-size: $font-lg;
             line-height: 130%;
             color: var(--character-light-title-85);
         }
 
         .ant-card-body {
             @include md {
-                padding: 16px 31px 16px 16px;
+                padding: $offset-16 $offset-30 $offset-16 $offset-16;
             }
         }
     }
@@ -54,7 +57,7 @@
     column-gap: 16px;
     row-gap: 8px;
     justify-content: space-between;
-    margin-top: 16px;
+    margin-top: $offset-16;
 
     @include sm {
         flex-direction: column;
@@ -81,7 +84,7 @@
 
         .ant-card-head-title {
             padding: 11px 0;
-            font-size: 16px;
+            font-size: $font-base;
             line-height: 130%;
             white-space: pre-wrap;
             color: var(--character-light-title-85);
@@ -91,9 +94,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 0;
+            padding: $offset-0 $offset-0;
             height: 56px;
-            font-size: 14px;
+            font-size: $font-sm;
             line-height: 130%;
             text-align: center;
             color: var(--primary-light-6);

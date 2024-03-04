@@ -1,4 +1,6 @@
 @import "src/assets/styles/_mixins.scss";
+@import "src/assets/styles/variables/_spacing";
+@import "src/assets/styles/variables/_font";
 
 .header {
     color: var(--character-light-title-85);
@@ -9,7 +11,7 @@
             flex-direction: column;
             height: auto;
             gap: 8px;
-            padding: 0 24px 16px 24px;
+            padding: $offset-0 $offset-24 $offset-16 $offset-24;
             background: var(--primary-light-1);
 
             @include xs {
@@ -19,25 +21,25 @@
 
         h1.ant-typography {
             margin-right: auto;
-            margin-bottom: 6px !important;
-            margin-top: 0;
-            font-weight: 700;
-            font-size: 38px;
+            margin-bottom: $offset-6 !important;
+            margin-top: $offset-0;
+            font-weight: $FW-bold;
+            font-size: $font-xxl;
             line-height: 120%;
 
             @include lg {
-                font-weight: 500;
-                font-size: 24px;
+                font-weight: $FW-medium;
+                font-size: $font-xl;
             }
 
             @include xs {
-                font-size: 20px;
-                font-weight: 500;
+                font-size: $font-lg;
+                font-weight: $FW-medium;
             }
         }
 
         .ant-btn-text {
-            padding-top: 0;
+            padding-top: $offset-0;
             height: 20px;
             line-height: 16px;
         }

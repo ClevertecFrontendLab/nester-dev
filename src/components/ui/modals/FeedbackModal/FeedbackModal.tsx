@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { Button, Grid, Modal, Rate } from 'antd';
-import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
+import { useAppDispatch, useMainStateSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { StarFilled, StarOutlined } from '@ant-design/icons';
 import TextArea from 'antd/es/input/TextArea';
 import { setModal } from '@redux/mainStore.ts';
@@ -9,7 +9,7 @@ import { useLeaveFeedback } from '@hooks/useLeaveFeedback.tsx';
 const { useBreakpoint } = Grid;
 
 const FeedbackModal: FC = () => {
-    const { rating, feedback } = useAppSelector((state) => state.mainState);
+    const { rating, feedback } = useMainStateSelector();
     const [stars, setStars] = useState(rating);
     const [text, setText] = useState(feedback);
     const { xs } = useBreakpoint();

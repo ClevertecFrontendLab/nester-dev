@@ -1,4 +1,6 @@
 @import "src/assets/styles/_mixins.scss";
+@import "src/assets/styles/variables/_spacing";
+@import "src/assets/styles/variables/_font";
 
 .wrapper {
     width: 100%;
@@ -8,7 +10,7 @@
         .ant-btn {
             display: block;
             margin: 20px auto 0;
-            font-size: 14px;
+            font-size: $font-sm;
             line-height: 130%;
             text-align: center;
             color: var(--character-light-primary-inverse);
@@ -36,18 +38,18 @@
 }
 
 .title {
-    font-weight: 500;
-    font-size: 24px;
+    font-weight: $FW-medium;
+    font-size: $font-xl;
     line-height: 130%;
     text-align: center;
     color: var(--primary-light-9);
-    margin: 0;
+    margin: $offset-0;
 }
 
 .description {
-    font-size: 14px;
+    font-size: $font-sm;
     line-height: 130%;
     text-align: center;
     color: var(--character-light-secondary-45);
-    margin: 0;
+    margin: $offset-0;
 }

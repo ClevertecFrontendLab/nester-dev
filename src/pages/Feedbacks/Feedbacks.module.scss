@@ -1,14 +1,15 @@
 @import "src/assets/styles/_mixins.scss";
+@import "src/assets/styles/variables/_spacing";
 
 .wrapper {
     display: flex;
     flex-direction: column;
-    padding: 24px 24px 42px;
+    padding: $offset-24 $offset-24 $offset-42;
     height: calc(100vh - 50px);
     max-height: 100vh;
 
 
     @include md {
-        padding: 24px 16px;
+        padding: $offset-24 $offset-16;
     }
 }

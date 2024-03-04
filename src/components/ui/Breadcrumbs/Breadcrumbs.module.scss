@@ -1,13 +1,16 @@
+@import "src/assets/styles/variables/_spacing";
+@import "src/assets/styles/variables/_font";
+
 .breadcrumbs {
-    padding: 16px 0 16px 24px;
+    padding: $offset-16 $offset-0 $offset-16 $offset-24;
     background: var(--primary-light-1);
     line-height: 130%;
     color: var(--character-light-title-85);
 
     :global {
         .ant-typography {
-            font-weight: 400;
-            font-size: 14px;
+            font-weight: $FW-regular;
+            font-size: $font-sm;
             color: var(--character-light-title-85);
         }
     }
@@ -21,7 +24,7 @@
 }
 
 .divider {
-    margin: 0 8px;
+    margin: $offset-0 $offset-8;
     color: var(--character-light-secondary-45)
 }
 

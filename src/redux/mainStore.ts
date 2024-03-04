@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ReactNode } from 'react';
+import { ModalTypes } from '@shared/constants.ts';
 
 interface IMainStoreInitialState {
     isAsideCollapsed: boolean;
     token: string;
     showLoader: boolean;
-    modal: ReactNode | null;
+    modal: ModalTypes | null;
     rating: number;
     feedback: string;
 }
@@ -35,7 +35,7 @@ const mainStoreSlice = createSlice({
             state.showLoader = action.payload;
         },
 
-        setModal: (state, action: PayloadAction<ReactNode | null>) => {
+        setModal: (state, action: PayloadAction<ModalTypes | null>) => {
             state.modal = action.payload;
         },
         setRating: (state, action: PayloadAction<number>) => {

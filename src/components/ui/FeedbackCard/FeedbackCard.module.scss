@@ -1,10 +1,12 @@
 @import "src/assets/styles/_mixins.scss";
+@import "src/assets/styles/variables/_spacing";
+@import "src/assets/styles/variables/_font";
 
 .card {
     display: flex;
     gap: 12px;
     width: 100%;
-    padding: 16px;
+    padding: $offset-16;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
     background: var(--character-light-primary-inverse);
     border-radius: 2px;
@@ -37,8 +39,8 @@
 }
 
 .name {
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: $FW-regular;
+    font-size: $font-base;
     line-height: 130%;
     color: var(--character-light-title-85);
     text-align: center;
@@ -56,24 +58,24 @@
 
     :global {
         .ant-rate {
-            font-size: 16px;
+            font-size: $font-base;
             color: var(--character-light-warning);
         }
     }
 }
 
 .date {
-    margin-left: 16px;
-    font-weight: 400;
-    font-size: 12px;
+    margin-left: $offset-16;
+    font-weight: $FW-regular;
+    font-size: $font-xs;
     line-height: 130%;
     text-align: right;
     color: var(--character-light-disable-25);
 }
 
 .text {
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: $FW-regular;
+    font-size: $font-sm;
     line-height: 130%;
     color: var(--character-light-secondary-45);
 }

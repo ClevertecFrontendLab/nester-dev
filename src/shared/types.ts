@@ -10,3 +10,5 @@ export enum AuthStatuses {
     PASSWORD_CHANGE = '/auth/change-password',
     PASSWORD_CHANGE_ERROR = '/result/error-change-password',
 }
+
+export type Nullable<T> = T | null;

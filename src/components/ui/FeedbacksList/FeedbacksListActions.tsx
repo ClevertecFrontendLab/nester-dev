@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { Button } from 'antd';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks.ts';
 import { setModal } from '@redux/mainStore.ts';
-import { FeedbackModal } from '@components/index.ts';
 
 import styles from './FeedbacksList.module.scss';
+import { ModalTypes } from '@shared/constants.ts';
 
 interface Props {
     isUnfolded: boolean;
@@ -21,7 +21,7 @@ const FeedbacksListActions: FC<Props> = ({ unfoldFeedbacks, isUnfolded }) => {
                 data-test-id='write-review'
                 type='primary'
                 size='large'
-                onClick={() => dispatch(setModal(<FeedbackModal />))}
+                onClick={() => dispatch(setModal(ModalTypes.FEEDBACK))}
             >
                 Написать отзыв
             </Button>

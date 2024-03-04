@@ -1,8 +1,9 @@
 @import "src/assets/styles/_mixins.scss";
+@import "src/assets/styles/variables/_spacing";
 
 .aside {
     position: relative;
-    padding-top: 30px;
+    padding-top: $offset-30;
     height: 100vh;
     background: var(--character-light-primary-inverse);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
@@ -15,7 +16,7 @@
 
     @include md {
         position: absolute;
-        padding-top: 0;
+        padding-top: $offset-0;
     }
 }
 
@@ -23,7 +24,7 @@
     display: flex;
     align-items: center;
     height: 64px;
-    padding-left: 29px;
+    padding-left: $offset-30;
     flex-wrap: nowrap;
 
     &_inner {
@@ -34,7 +35,7 @@
     }
 
     &_collapsed {
-        padding-left: 16px;
+        padding-left: $offset-16;
     }
 
     &_clever {
@@ -51,7 +52,7 @@
     }
 
     @include md {
-        padding-left: 17px;
+        padding-left: $offset-16;
         height: 50px;
 
         &_inner {

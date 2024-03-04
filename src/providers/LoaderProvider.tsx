@@ -1,9 +1,9 @@
 import { FC, PropsWithChildren } from 'react';
 import { Loader } from '@components/index.ts';
-import { useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
+import { useMainStateSelector } from '@hooks/typed-react-redux-hooks.ts';
 
 const LoaderProvider: FC<PropsWithChildren> = ({ children }) => {
-    const { showLoader } = useAppSelector((state) => state.mainState);
+    const { showLoader } = useMainStateSelector();
 
     return (
         <>

@@ -5,3 +5,5 @@ import type { AppDispatch, RootState } from '@redux/configure-store';
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+export const useMainStateSelector = () => useAppSelector((state) => state.mainState);

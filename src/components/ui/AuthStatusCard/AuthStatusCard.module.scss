@@ -1,3 +1,6 @@
+@import "src/assets/styles/variables/_spacing";
+@import "src/assets/styles/variables/_font";
+
 .wrapper {
     position: relative;
     display: flex;
@@ -39,18 +42,18 @@
 
 .title {
     width: 100%;
-    font-weight: 500;
-    font-size: 24px;
+    font-weight: $FW-medium;
+    font-size: $font-xl;
     line-height: 130%;
     text-align: center;
     color: var(--character-light-title-85);
-    margin-bottom: 0;
+    margin-bottom: $offset-0;
 }
 
 .description {
-    margin-bottom: 0;
-    font-weight: 400;
-    font-size: 14px;
+    margin-bottom: $offset-0;
+    font-weight: $FW-regular;
+    font-size: $font-sm;
     line-height: 130%;
     text-align: center;
     color: var(--character-light-secondary-45);
@@ -63,8 +66,8 @@
     justify-content: center;
 
     &_text {
-        font-weight: 400;
-        font-size: 14px;
+        font-weight: $FW-regular;
+        font-size: $font-sm;
         line-height: 130%;
         text-align: center;
         color: var(--character-light-secondary-45);
@@ -88,8 +91,8 @@
 
         &_filled {
             font-family: var(--font-family);
-            font-weight: 400;
-            font-size: 14px;
+            font-weight: $FW-regular;
+            font-size: $font-base;
             line-height: 40px;
             text-align: center;
             color: var(--character-light-title-85);

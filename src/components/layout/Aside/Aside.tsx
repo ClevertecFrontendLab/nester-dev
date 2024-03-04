@@ -2,12 +2,12 @@ import { FC, useState } from 'react';
 import { Layout } from 'antd';
 import Menu from '@components/ui/Menu/Menu.tsx';
 import AsideToggle from '@components/layout/Aside/AsideToggle.tsx';
-import { useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
+import { useMainStateSelector } from '@hooks/typed-react-redux-hooks.ts';
 
 import styles from './Aside.module.scss';
 
 const Aside: FC = () => {
-    const { isAsideCollapsed } = useAppSelector((state) => state.mainState);
+    const { isAsideCollapsed } = useMainStateSelector();
     const [asideWidth, setAsideWidth] = useState({ full: 208, collapsed: 64 });
 
     const handleBreakPoint = (broken: boolean) => {
