@@ -1,0 +1,55 @@
+@import "src/assets/styles/_mixins.scss";
+@import "src/assets/styles/variables/_spacing";
+@import "src/assets/styles/variables/_font";
+
+.wrapper {
+    width: 100%;
+    margin: auto;
+
+    :global {
+        .ant-btn {
+            display: block;
+            margin: 20px auto 0;
+            font-size: $font-sm;
+            line-height: 130%;
+            text-align: center;
+            color: var(--character-light-primary-inverse);
+        }
+    }
+}
+
+.placeholder {
+    padding: 75px 32px;
+    width: 100%;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+    background: var(--character-light-primary-inverse);
+
+    @include md {
+        padding-top: 48px;
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.title {
+    font-weight: $FW-medium;
+    font-size: $font-xl;
+    line-height: 130%;
+    text-align: center;
+    color: var(--primary-light-9);
+    margin: $offset-0;
+}
+
+.description {
+    font-size: $font-sm;
+    line-height: 130%;
+    text-align: center;
+    color: var(--character-light-secondary-45);
+    margin: $offset-0;
+}

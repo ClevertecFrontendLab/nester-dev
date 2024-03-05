@@ -1,0 +1,65 @@
+@import "src/assets/styles/_mixins.scss";
+@import "src/assets/styles/variables/_spacing";
+@import "src/assets/styles/variables/_font";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+.list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @include md {
+        row-gap: 16px;
+    }
+}
+
+.actions {
+    display: flex;
+    column-gap: 8px;
+    margin-top: 20px;
+    padding-top: 112px;
+    row-gap: 16px;
+
+    :global {
+        .ant-btn {
+            font-weight: $FW-regular;
+            font-size: $font-sm;
+            line-height: 130%;
+            text-align: center;
+            color: var(--character-light-primary-inverse);
+        }
+
+        .ant-btn-text {
+            font-weight: $FW-regular;
+            font-size: $font-base;
+            line-height: 130%;
+            text-align: center;
+            color: var(--primary-light-6);
+        }
+
+    }
+
+    @include xl {
+        padding-top: 60px;
+    }
+
+    @include md {
+        flex-direction: column;
+        padding-top: 32px;
+        margin-top: $offset-16;
+    }
+}

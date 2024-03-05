@@ -1,0 +1,15 @@
+@import "src/assets/styles/_mixins.scss";
+@import "src/assets/styles/variables/_spacing";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: $offset-24 $offset-24 $offset-42;
+    height: calc(100vh - 50px);
+    max-height: 100vh;
+
+
+    @include md {
+        padding: $offset-24 $offset-16;
+    }
+}

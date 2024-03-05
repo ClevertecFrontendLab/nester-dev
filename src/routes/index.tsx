@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Paths } from '@shared/constants.ts';
-import { AuthPage, AuthResultPage, MainPage } from '@pages/index.ts';
+import { AuthPage, AuthResultPage, Feedbacks, MainPage } from '@pages/index.ts';
 import { AuthLayout } from '@components/index.ts';
 import { AuthProvider } from '@providers/index.ts';
 
@@ -15,6 +15,7 @@ export const routes = (
         </Route>
         <Route path='/' element={<AuthProvider />}>
             <Route index path={Paths.HOME} element={<MainPage />} />
+            <Route index path={Paths.FEEDBACKS} element={<Feedbacks />} />
         </Route>
     </Routes>
 );

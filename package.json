@@ -50,6 +50,7 @@
     "arui-presets-lint": "^6.1.0",
     "clsx": "^2.1.0",
     "cypress": "^12.7.0",
+    "date-fns": "^3.3.1",
     "eslint": "^8.29.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",

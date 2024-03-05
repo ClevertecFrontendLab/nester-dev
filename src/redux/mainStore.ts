@@ -1,15 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ModalTypes } from '@shared/constants.ts';
 
 interface IMainStoreInitialState {
     isAsideCollapsed: boolean;
     token: string;
     showLoader: boolean;
+    modal: ModalTypes | null;
+    rating: number;
+    feedback: string;
 }
 
 const initialState: IMainStoreInitialState = {
     isAsideCollapsed: true,
     token: '',
     showLoader: false,
+    modal: null,
+    rating: 0,
+    feedback: '',
 };
 
 const mainStoreSlice = createSlice({
@@ -27,9 +34,20 @@ const mainStoreSlice = createSlice({
         setShowLoader: (state, action: PayloadAction<boolean>) => {
             state.showLoader = action.payload;
         },
+
+        setModal: (state, action: PayloadAction<ModalTypes | null>) => {
+            state.modal = action.payload;
+        },
+        setRating: (state, action: PayloadAction<number>) => {
+            state.rating = action.payload;
+        },
+        setFeedback: (state, action: PayloadAction<string>) => {
+            state.feedback = action.payload;
+        },
     },
 });
 
 export default mainStoreSlice.reducer;
 
-export const { toggleAside, setToken, setShowLoader } = mainStoreSlice.actions;
+export const { toggleAside, setToken, setShowLoader, setModal, setRating, setFeedback } =
+    mainStoreSlice.actions;

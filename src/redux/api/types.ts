@@ -22,3 +22,8 @@ export interface IChangePasswordDto {
     password: string;
     confirmPassword: string;
 }
+
+export interface ILeaveFeedbackDto {
+    message: string;
+    rating: number;
+}

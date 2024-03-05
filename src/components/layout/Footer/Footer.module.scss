@@ -1,7 +1,9 @@
 @import "src/assets/styles/_mixins.scss";
+@import "src/assets/styles/variables/_spacing";
+@import "src/assets/styles/variables/_font";
 
 .footer {
-    padding-bottom: 42px;
+    padding-bottom: $offset-42;
 
     :global {
         .ant-layout-footer {
@@ -9,21 +11,21 @@
             justify-content: space-between;
             align-items: end;
             width: 100%;
-            padding: 0 24px;
+            padding: $offset-0 $offset-24;
             background: transparent;
 
             @include sm {
                 flex-direction: column-reverse;
                 align-items: center;
                 row-gap: 24px;
-                padding: 0 16px;
+                padding: $offset-0 $offset-16;
             }
         }
     }
 
     .reviews {
-        font-weight: 400;
-        font-size: 16px !important;
+        font-weight: $FW-regular;
+        font-size: $font-base !important;
         line-height: 130%;
         text-align: center;
         color: var(--primary-light-6);
@@ -36,20 +38,20 @@
     gap: 8px;
 
     p {
-        margin-bottom: 0;
+        margin-bottom: $offset-0;
     }
 }
 
 .title {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: $font-base;
+    font-weight: $FW-regular;
     line-height: 130%;
     color: var(--primary-light-6);
 }
 
 .subtitle {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: $font-sm;
+    font-weight: $FW-regular;
     line-height: 130%;
     color: var(--character-light-secondary-45);
 }

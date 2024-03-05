@@ -6,6 +6,7 @@ import { Paths } from '@shared/constants.ts';
 
 import styles from './AuthForm.module.scss';
 import { useAuth } from '@hooks/useAuth.ts';
+import { UrlConfig } from '@redux/api/helpers/url.config.ts';
 
 const { useBreakpoint } = Grid;
 
@@ -22,6 +23,10 @@ const AuthButtons: FC<Props> = ({ hasErrors }) => {
     const buttonText = pathname === Paths.LOGIN ? 'Войти' : 'Регистрация';
     const dataTestId =
         pathname === Paths.LOGIN ? 'login-submit-button' : 'registration-submit-button';
+
+    const handleGoogleLogin = () => {
+        window.location.href = `${import.meta.env.VITE_API_URL}${UrlConfig.LOGIN_GOOGLE}`;
+    };
 
     const onSubmit = () => {
         const values = form.getFieldsValue();
@@ -41,7 +46,9 @@ const AuthButtons: FC<Props> = ({ hasErrors }) => {
             <Button type='primary' htmlType='submit' data-test-id={dataTestId} onClick={onSubmit}>
                 {buttonText}
             </Button>
-            <Button icon={sm && <GooglePlusOutlined />}>{buttonText} через Google</Button>
+            <Button icon={sm && <GooglePlusOutlined />} onClick={handleGoogleLogin}>
+                {buttonText} через Google
+            </Button>
         </div>
     );
 };

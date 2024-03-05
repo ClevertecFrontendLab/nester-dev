@@ -3,15 +3,16 @@ import { RootState } from '@redux/configure-store.ts';
 import { UrlConfig } from '@redux/api/helpers/url.config.ts';
 import { HttpMethod } from '@redux/api/helpers/http-methods.ts';
 import { IAuthDto, IAuthResponseDto } from '@redux/api/types.ts';
-import { saveTokenToStorage } from '@redux/api/helpers/helper.ts';
+import { getAccessToken, saveTokenToStorage } from '@redux/api/helpers/helper.ts';
 import { setShowLoader, setToken } from '@redux/mainStore.ts';
 
 export const api = createApi({
     reducerPath: 'api',
+    tagTypes: ['Feedbacks'],
     baseQuery: fetchBaseQuery({
         baseUrl: `${import.meta.env.VITE_API_URL}`,
         prepareHeaders: (headers, { getState }) => {
-            const token = (getState() as RootState).mainState.token;
+            const token = (getState() as RootState).mainState.token || getAccessToken();
 
             if (token) {
                 headers.set('Authorization', `Bearer ${token}`);

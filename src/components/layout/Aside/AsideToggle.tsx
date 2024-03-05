@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Grid } from 'antd';
 import { MenuFoldOutlined } from '@ant-design/icons';
-import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks.ts';
+import { useAppDispatch, useMainStateSelector } from '@hooks/typed-react-redux-hooks.ts';
 import { toggleAside } from '@redux/mainStore.ts';
 
 import styles from './Aside.module.scss';
@@ -10,7 +10,7 @@ const { useBreakpoint } = Grid;
 
 const AsideToggle: FC = () => {
     const { xs } = useBreakpoint();
-    const { isAsideCollapsed } = useAppSelector((state) => state.mainState);
+    const { isAsideCollapsed } = useMainStateSelector();
     const dispatch = useAppDispatch();
 
     const handleClick = () => {
